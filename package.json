@@ -1,0 +1,21 @@
+{
+  "name": "proyecto_personal",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mariadelaverde98/proyecto_personal.git"
+  },
+  "keywords": [],
+  "author": "Maria de la Verde",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mariadelaverde98/proyecto_personal/issues"
+  },
+  "homepage": "https://github.com/Mariadelaverde98/proyecto_personal#readme"
+}
