@@ -9,8 +9,6 @@ const Users = require("../models/usersModel")
 const users = {
     insert : async (req, res) => {
         const {nombre, nombre_usuario, email, contrasenia } = req.body;
-        console.log("-------------------------------------");
-        console.log(req.body);
         let conexion = sql.sqlConexion();
         await Users.create({ nombre, nombre_usuario, email, contrasenia });
         conexion.close()
