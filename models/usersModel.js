@@ -1,4 +1,4 @@
-const { Sequelize, DataTypes } = require('sequelize');
+const DataTypes = require('sequelize');
 const sequelize = require('../databases/mysql').sqlConexion();
 
 const Users = sequelize.define('USERS', {
@@ -7,7 +7,7 @@ const Users = sequelize.define('USERS', {
         autoIncrement: true,
         primaryKey: true
     },
-    nombre_usuario: {
+    username: {
         type: DataTypes.STRING,
         unique: true,
         allowNull: false
@@ -17,23 +17,22 @@ const Users = sequelize.define('USERS', {
         unique: true,
         allowNull: false
     },
-    nombre: {
+    name_: {
         type: DataTypes.STRING,
         allowNull: false
     },
-    contrasenia: {
+    password_: {
         type: DataTypes.STRING,
         allowNull: false
     },
-    foto_perfil: {
+    photo_profile: {
         type: DataTypes.STRING,
         allowNull: true
     },
-    fecha_registro: {
+    date_: {
         type: DataTypes.DATE
     }
 }, {
     timestamps: false
 });
-
 module.exports = Users;

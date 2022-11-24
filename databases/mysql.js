@@ -16,7 +16,5 @@ function sqlConexion() {
     return sequelize;
 }
 
-
-
 module.exports = {sqlConexion};
 
