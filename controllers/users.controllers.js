@@ -36,7 +36,7 @@ const users = {
         if (user) {
             if (bcryptjs.compareSync(req.body.password_, user.dataValues.password_)) { //compara la contraseña encriptada en la base de datos con la contraseña introducida
                 res.cookie("infoJwt", jwt.sign({ email: req.body.email }, "m4riAL4M3j0r"));
-                res.send("ok");
+                res.json("ok");
             } else {
                 res.json("password incorrecta");
             }
