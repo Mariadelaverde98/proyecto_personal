@@ -1,20 +1,28 @@
-const Sequelize = require('sequelize')
 
-function sqlConexion() {
-    const sequelize = new Sequelize('shootit', 'root', 'root', {
-        host: 'localhost',
-        dialect: 'mysql',
-        port: 3306
-    })
-    sequelize.authenticate()
-        .then(() => {
-            console.log('Conectado')
+conexion = {
+    abrir: async () => {
+        const Sequelize = require('sequelize')
+
+        const sequelize = new Sequelize('shootit', 'root', 'root', {
+            host: 'localhost',
+            dialect: 'mysql',
+            port: 3306
         })
-        .catch(err => {
-            console.log('No conectado: ' + err)
-        });
-    return sequelize;
+
+        await sequelize.authenticate()
+            .then(() => {
+                console.log("Abierta Sequelize")
+            })
+
+
+        return sequelize;
+
+    },
+    cerrar: async con => {
+        await con.close();
+        console.log("Cerrada Sequelize");
+    }
 }
 
-module.exports = {sqlConexion};
 
+module.exports = conexion;

@@ -1,5 +1,5 @@
-const sql = require("../databases/mysql");
-const Users = require("../models/usersModel");
+const conexion = require("../databases/mysql");
+const userModel = require("../models/usersModel");
 const jwt = require("jsonwebtoken");
 const bcryptjs = require('bcryptjs');
 
@@ -13,9 +13,10 @@ const users = {
     insert: async (req, res) => {
         try {
             const { name_, username, email, password_ } = req.body;
-            let conexion = await sql.sqlConexion();
-            res.json(await Users.create({ name_, username, email, password_: await bcryptjs.hash(password_, 8) }));
-            conexion.close()
+            let con = await conexion.abrir();
+            const user = await userModel.create(con);
+            res.json(await user.create({ name_, username, email, password_: await bcryptjs.hash(password_, 8) }));
+            await conexion.cerrar(con);
         } catch (ValidationError) {
             if (ValidationError.fields && ValidationError.fields.email) {
                 res.send("email repe");
@@ -28,9 +29,10 @@ const users = {
     },
 
     login: async (req, res) => {
-        let conexion = await sql.sqlConexion();
-        const user = await Users.findOne({ where: { "email": req.body.email } });
-        conexion.close();
+        let con = await conexion.abrir();
+        const userr = await userModel.create(con);
+        const user = await userr.findOne({ where: { "email": req.body.email } });
+        await conexion.cerrar(con);
         if (user) {
             if (bcryptjs.compareSync(req.body.password_, user.dataValues.password_)) { //compara la contraseña encriptada en la base de datos con la contraseña introducida
                 res.cookie("infoJwt", jwt.sign({ email: req.body.email }, "m4riAL4M3j0r"));
