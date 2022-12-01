@@ -14,6 +14,8 @@
 | `POST` | `/login` | Crea un JWT con el email del usuario que ha hecho el login y lo añade en una cookie con nombre "infoJWT"|
 | `GET` | `/logout` | Borra la cookie "infoJWT" |
 | `DELETE` | `/deleteUser` | Borra un registro de la tabla users de la base de datos |
+| `POST` | `/updatePhotoProfile` | Actualiza la foto de perfil del usuario |
+| `POST` | `/findUserByUsername` | Muestra todos los usuarios que contengan el nombre introducido |
 
 ### Controlador de followers
 
@@ -28,14 +30,12 @@
 
 | Tipo de petición | End Point | Descripción   |
 | :-------- | :------- | :------------------------- |
-| `-` | `-` | Descripción |
-| `-` | `-` | Descripción |
+| `POST` | `/addPublication` | Inserta un registro en la tabla publications de la base de datos |
+| `POST` | `/deletePublication` | Borra un registro de la tabla publications de la base de datos |
 
 ### Controlador de tags
 
 | Tipo de petición | End Point | Descripción   |
 | :-------- | :------- | :------------------------- |
-| `-` | `-` | Descripción |
-| `-` | `-` | Descripción |
-| `-` | `-` | Descripción |
-| `-` | `-` | Descripción |
+| `POST` | `/addTag` | Inserta un registro en la tabla tags de la base de datos |
+| `POST` | `/deleteTag` | Borra un registro de la tabla tags de la base de datos |
