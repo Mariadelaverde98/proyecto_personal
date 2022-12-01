@@ -15,6 +15,7 @@
 | `GET` | `/logout` | Borra la cookie "infoJWT" |
 | `DELETE` | `/deleteUser` | Borra un registro de la tabla users de la base de datos |
 | `POST` | `/updatePhotoProfile` | Actualiza la foto de perfil del usuario |
+| `POST` | `/findUserByUsername` | Muestra todos los usuarios que contengan el nombre introducido |
 
 ### Controlador de followers
 
