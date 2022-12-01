@@ -1,6 +1,7 @@
-# proyecto_personal
+# Proyecto final individual 
 <img src="img\logo-sinfondo.png">
 <img src="docs\diagrama.png">
+<img src="docs\uml.png">
 <a href="https://excalidraw.com/#json=aGS3Hyw1kCfCMXlYhpI0j,V7Q4Aq54bKbV_v7IWYJYZw">Excalidraw</a>
 
 ## Diseño del back
