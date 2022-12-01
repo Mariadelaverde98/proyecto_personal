@@ -1,0 +1,5 @@
+img#fotoperfil {
+    border-radius: 100%;
+    width: 150px;
+    border: 2px solid rgb(155, 143, 255);
+}

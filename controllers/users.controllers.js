@@ -27,9 +27,9 @@ const users = {
             await conexion.cerrar(con);
         } catch (ValidationError) {
             if (ValidationError.fields && ValidationError.fields.email) {
-                res.send("email repe");
+                res.json("email repe");
             } else if (ValidationError.fields && ValidationError.fields.username) {
-                res.send("nombre user repe");
+                res.json("nombre user repe");
             }
         }
     },

@@ -5,7 +5,7 @@ import logo from "./img/logo-sinfondo.png";
 const Login = (props) => {
     const [email, setEmail] = useState("");
     const [password_, setPassword_] = useState("");
-    const [loginOk, setLoginOk] = useState(true);
+    const [loginOk, setLoginOk] = useState();
 
     const login = () => {
         let datos = {
