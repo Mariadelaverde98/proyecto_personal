@@ -10,17 +10,17 @@
 
 | Tipo de petición | End Point | Descripción   |
 | :-------- | :------- | :------------------------- |
-| `POST` | `/insertUser` | Descripción |
-| `POST` | `/login` | Descripción |
-| `GET` | `/logout` | Descripción |
-| `DELETE` | `/deleteUser` | Borra un registro de la tabla de usuaios de la base de datos |
+| `POST` | `/insertUser` | Inserta un registro en la tabla users de la base de datos |
+| `POST` | `/login` | Crea un JWT con el email del usuario que ha hecho el login y lo añade en una cookie con nombre "infoJWT"|
+| `GET` | `/logout` | Borra la cookie "infoJWT" |
+| `DELETE` | `/deleteUser` | Borra un registro de la tabla users de la base de datos |
 
 ### Controlador de followers
 
 | Tipo de petición | End Point | Descripción   |
 | :-------- | :------- | :------------------------- |
-| `POST` | `/follow` | Descripción |
-| `POST` | `/unfollow` | Descripción |
+| `POST` | `/follow` | Inserta un registro en la tabla followers de la base de datos |
+| `POST` | `/unfollow` | Borra un registro de la tabla followers de la base de datos |
 | `GET` | `/showFollowers` | Muestra todos los followers del usuario que tiene la sesión iniciada |
 | `GET` | `/showFollowing` | Muestra todos los usuarios que sigue el usuario que tiene la sesión iniciada |
 
@@ -28,16 +28,14 @@
 
 | Tipo de petición | End Point | Descripción   |
 | :-------- | :------- | :------------------------- |
-| `POST` | `/follow` | Descripción |
-| `POST` | `/unfollow` | Descripción |
-| `GET` | `/showFollowers` | Muestra todos los followers del usuario que tiene la sesión iniciada |
-| `GET` | `/showFollowing` | Muestra todos los usuarios que sigue el usuario que tiene la sesión iniciada |
+| `-` | `-` | Descripción |
+| `-` | `-` | Descripción |
 
 ### Controlador de tags
 
 | Tipo de petición | End Point | Descripción   |
 | :-------- | :------- | :------------------------- |
-| `POST` | `/follow` | Descripción |
-| `POST` | `/unfollow` | Descripción |
-| `GET` | `/showFollowers` | Muestra todos los followers del usuario que tiene la sesión iniciada |
-| `GET` | `/showFollowing` | Muestra todos los usuarios que sigue el usuario que tiene la sesión iniciada |
+| `-` | `-` | Descripción |
+| `-` | `-` | Descripción |
+| `-` | `-` | Descripción |
+| `-` | `-` | Descripción |
