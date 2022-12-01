@@ -30,14 +30,12 @@
 
 | Tipo de petición | End Point | Descripción   |
 | :-------- | :------- | :------------------------- |
-| `-` | `-` | Descripción |
-| `-` | `-` | Descripción |
+| `POST` | `/addPublication` | Inserta un registro en la tabla publications de la base de datos |
+| `POST` | `/deletePublication` | Borra un registro de la tabla publications de la base de datos |
 
 ### Controlador de tags
 
 | Tipo de petición | End Point | Descripción   |
 | :-------- | :------- | :------------------------- |
-| `-` | `-` | Descripción |
-| `-` | `-` | Descripción |
-| `-` | `-` | Descripción |
-| `-` | `-` | Descripción |
+| `POST` | `/addTag` | Inserta un registro en la tabla tags de la base de datos |
+| `POST` | `/deleteTag` | Borra un registro de la tabla tags de la base de datos |
