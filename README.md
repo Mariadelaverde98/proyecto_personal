@@ -14,6 +14,7 @@
 | `POST` | `/login` | Crea un JWT con el email del usuario que ha hecho el login y lo añade en una cookie con nombre "infoJWT"|
 | `GET` | `/logout` | Borra la cookie "infoJWT" |
 | `DELETE` | `/deleteUser` | Borra un registro de la tabla users de la base de datos |
+| `POST` | `/updatePhotoProfile` | Actualiza la foto de perfil del usuario |
 
 ### Controlador de followers
 
