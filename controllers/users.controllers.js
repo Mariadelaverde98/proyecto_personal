@@ -6,8 +6,16 @@ const bcryptjs = require('bcryptjs');
 const users = {
     /**
      * Funcion que inserta un registro en la tabla users de la base de datos 
-     * de mySQL.
-     * @param {json} req 
+     * de mySQL. En caso de que el email y el nombre de usario no esten repetidos,
+     * la funcion devuelve un json con los datos del usuario registrado. En caso de
+     * el email este repetido, se devuelve "email repe" y si el nombre de usuario
+     * esta repetido, se devuelve "nombre user repe".
+     * @param {json} req req.body = {
+     *     name_: "nombre",
+     *     username : "nombredeusuario",
+     *     email : "email@a.com",
+     *     password_: "1234"
+     * }
      * @param {json} res 
      */
     insert: async (req, res) => {
@@ -22,8 +30,6 @@ const users = {
                 res.send("email repe");
             } else if (ValidationError.fields && ValidationError.fields.username) {
                 res.send("nombre user repe");
-            } else {
-                res.json(ValidationError);
             }
         }
     },

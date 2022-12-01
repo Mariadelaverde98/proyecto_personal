@@ -6,7 +6,7 @@ const user = require("../controllers/users.controllers")
 //USERS
 router.post("/insertUser", user.insert);
 router.post("/login", user.login);
-router.post("/logout", user.logout);
+router.get("/logout", user.logout);
 
 //FOLLOWERS
 router.post("/follow", follower.follow);

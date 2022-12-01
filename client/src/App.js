@@ -1,10 +1,15 @@
+import { useState } from 'react';
 import './App.css';
-import Login from "./components/Login"
+import Login from "./components/Login";
+import Register from "./components/Register"
 
 function App() {
+  const [viewRegis, setViewRegis] = useState(false);
   return (
     <div className="App">
-      <Login></Login>
+
+      {viewRegis? <Register vista={setViewRegis}/>  : <Login vista={setViewRegis} />}
+      
     </div>
   );
 }
