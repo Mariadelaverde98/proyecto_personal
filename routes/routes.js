@@ -7,6 +7,7 @@ const image = require("../controllers/images.controllers");
 router.post("/insertUser", user.insert);
 router.post("/login", user.login);
 router.get("/logout", user.logout);
+router.post("/setProfilePhoto", user.setProfilePhoto);
 
 //FOLLOWERS
 router.post("/follow", follower.follow);

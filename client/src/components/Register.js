@@ -61,7 +61,7 @@ const Register = (props) => {
                         ¿Ya tienes una cuenta? <a onClick={() => { props.vista(false) }}>Inicia sesión</a>
                     </div>
                 </div>
-                : <RegisterContinue></RegisterContinue>}
+                : <RegisterContinue email={email} name={name_} username ={username}></RegisterContinue>}
         </div>
     );
 };
