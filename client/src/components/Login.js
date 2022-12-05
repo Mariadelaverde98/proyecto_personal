@@ -34,7 +34,7 @@ const Login = (props) => {
                     <div>Email o contraseña incorrecta</div>
                 ): null}
                 <button onClick={() => { login() }}>Entrar</button>
-
+                <p>¿Olvidaste tu contraseña?</p>
             </div>
             <div id="separador">
 
