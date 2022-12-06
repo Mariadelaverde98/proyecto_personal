@@ -52,7 +52,7 @@ const RegisterContinue = (props) => {
                     <p>Email: {props.email}</p>
                 </div>
             </form>
-            <button>Continuar</button>
+            <button onClick={() => props.setLogueado(true)}>Continuar</button>
         </div>
     );
 };

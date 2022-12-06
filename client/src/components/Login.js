@@ -5,7 +5,7 @@ import logo from "./img/logo-sinfondo.png";
 const Login = (props) => {
     const [email, setEmail] = useState("");
     const [password_, setPassword_] = useState("");
-    const [loginOk, setLoginOk] = useState();
+    const [loginOk, setLoginOk] = useState(true);
 
     const login = () => {
         let datos = {
@@ -17,7 +17,11 @@ const Login = (props) => {
         fetch("/login", datos)
             .then((res) => res.json())
             .then((res) => {
-                if (res !== "ok") setLoginOk(false);
+                if (res !== "ok") {
+                    setLoginOk(false)
+                } else {
+                    props.setLogueado(true);
+                };
             });
     }
 
