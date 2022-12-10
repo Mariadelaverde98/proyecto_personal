@@ -42,7 +42,7 @@ const RegisterContinue = (props) => {
             <form id="myform" name="myform" encType="multipart/form-data">
                 <label>
                     <input hidden id="files" name="file" type="file" onChange={(e) => { saveFoto(e) }} ></input>
-                    <div className="container">
+                    <div className="containerr">
                         <img id="fotoperfil" src={foto} />
                     </div>
                 </label>

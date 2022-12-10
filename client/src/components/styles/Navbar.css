@@ -1,0 +1,14 @@
+nav {
+    background-color: #343a40;
+    width: 100%;
+    height: 70px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+nav a {
+    
+    color: rgb(155, 143, 255);
+}

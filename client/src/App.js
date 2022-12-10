@@ -6,9 +6,8 @@ import Home from "./components/Home";
 
 function App() {
   const [viewRegis, setViewRegis] = useState(false);
-  const [logueado, setLogueado] = useState(false);
-
-
+  const [logueado, setLogueado] = useState(Boolean(document.cookie));
+  
   if (logueado) {
     return(
       <div className="App">

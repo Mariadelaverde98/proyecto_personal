@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import "./styles/Login.css";
+import Menu from "./Menu";
+import "./styles/Home.css"
 
 const Home = (props) => {
 
     return (
-        <div>
-            Sesion iniciada
+        <div id="homecontainer">
+            <Menu/>
         </div>
     );
 };

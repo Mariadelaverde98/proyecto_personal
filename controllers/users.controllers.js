@@ -67,16 +67,21 @@ const users = {
         await conexion.cerrar(con);
     },
 
+    userSesion: async (req, res) => {
+        let con = await conexion.abrir();
+        const userr = await userModel.create(con);
+        let infojwt = await users.emailSesion(req, res);
+        let user = await userr.findOne({ where: { "email": infojwt.email } });
+        await conexion.cerrar(con);
+        console.log(user)
+        res.json(user);
+    },
+
     emailSesion: (req, res) => {
         var cookies = req.cookies;
         var token = cookies.infoJwt;
-        try {
-            let jwtVerify = jwt.verify(token, "m4riAL4M3j0r");
-            res.json(jwtVerify);
-            return jwtVerify;
-        } catch (error) {
-            res.json("Usuario no loggeado");
-        }
+        let jwtVerify = jwt.verify(token, "m4riAL4M3j0r");
+        return jwtVerify;
     },
 }
 
