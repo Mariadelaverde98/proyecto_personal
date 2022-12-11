@@ -2,6 +2,7 @@ const conexion = require("../databases/mysql");
 const userModel = require("../models/usersModel");
 const jwt = require("jsonwebtoken");
 const bcryptjs = require('bcryptjs');
+const { Op } = require("sequelize");
 
 const users = {
     /**
@@ -73,7 +74,6 @@ const users = {
         let infojwt = await users.emailSesion(req, res);
         let user = await userr.findOne({ where: { "email": infojwt.email } });
         await conexion.cerrar(con);
-        console.log(user)
         res.json(user);
     },
 
@@ -82,6 +82,14 @@ const users = {
         var token = cookies.infoJwt;
         let jwtVerify = jwt.verify(token, "m4riAL4M3j0r");
         return jwtVerify;
+    },
+
+    searchUsers: async (req, res) => {
+        let con = await conexion.abrir();
+        const user = await userModel.create(con);
+        let users = await user.findAll({ where: { "username": { [Op.like]: `${req.body.username}%` } } });
+        await conexion.cerrar(con);
+        res.json(users);
     },
 }
 

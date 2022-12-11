@@ -9,6 +9,7 @@ router.post("/login", user.login);
 router.get("/logout", user.logout);
 router.post("/setProfilePhoto", user.setProfilePhoto);
 router.get("/userSesion", user.userSesion);
+router.post("/searchUsers", user.searchUsers);
 
 //FOLLOWERS
 router.post("/follow", follower.follow);
