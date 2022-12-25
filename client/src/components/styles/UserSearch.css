@@ -1,0 +1,43 @@
+.cuadroUser img{
+    width: 40px;
+    border-radius: 100%;
+    background-color: aliceblue;
+    border: 2px solid rgb(155, 143, 255);
+}
+
+.cuadroUser {
+    display: flex;
+    margin-left: 7.5%;
+    margin-top: 10px;
+    width: 85%;  
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cuadroUser div{
+    display: flex;
+}
+
+.cuadroUser div p{
+    margin:0;
+    margin-top: 8px;
+    padding-left: 8px;
+}
+
+button.follows {
+    border-radius: 5px;
+    border: 2px solid rgb(155, 143, 255);
+    background-color: rgba(154, 143, 255, 0.326);
+    color: rgb(155, 143, 255);
+    width: 80px;
+    height: 35px;
+}
+
+button.unfollows {
+    width: 80px;
+    border-radius: 5px;
+    border: 2px solid rgb(155, 143, 255);
+    background-color: #343a40e1;
+    color: aliceblue;
+    height: 35px;
+}

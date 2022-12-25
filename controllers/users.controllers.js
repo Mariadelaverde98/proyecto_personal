@@ -87,7 +87,7 @@ const users = {
     searchUsers: async (req, res) => {
         let con = await conexion.abrir();
         const user = await userModel.create(con);
-        let users = await user.findAll({ where: { "username": { [Op.like]: `${req.body.username}%` } } });
+        let users = await user.findAll({ limit: 10, where: { "username": { [Op.like]: `${req.body.username}%` } } });
         await conexion.cerrar(con);
         res.json(users);
     },

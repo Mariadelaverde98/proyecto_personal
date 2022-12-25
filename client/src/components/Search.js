@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import "./styles/Search.css";
+import UserSearch from "./UserSearch";
 
 const Search = (props) => {
     const [users, setUsers] = useState([]);
@@ -17,10 +19,10 @@ const Search = (props) => {
     }
     return (
         <div >
-            <input id="inputsearch" type="text" onChange={(e) => buscar(e.target.value)}/>
+            <input id="inputsearch" type="text" placeholder="username" onChange={(e) => buscar(e.target.value)}/>
             <div id="userresults">
             {users ? users.map((user, i) => {
-                return <div>{user.username}</div>;
+                return <UserSearch key={user.id} id={user.id} img={user.photo_profile} username={user.username}/>;
               })
             : ""}
             </div>

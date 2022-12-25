@@ -14,7 +14,7 @@ nav a {
 }
 
 img#photo_menu {
-    width: 45px;
+    width: 35px;
     border-radius: 100%;
     background-color: aliceblue;
     border: 2px solid rgb(155, 143, 255);
@@ -24,7 +24,7 @@ img#lupa {
     width: 35px;
 }
 img#logocam {
-    width: 50px;
+    width: 35px;
 }
 img#chat {
     width: 35px;

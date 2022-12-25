@@ -1,7 +1,7 @@
-const sql = require("../databases/mysql");
-const Followers = require("../models/followersModel");
+const conexion = require("../databases/mysql");
+const followerModel = require("../models/followersModel");
 const jwt = require("jsonwebtoken");
-const Users = require("../models/usersModel");
+const UserModel = require("../models/usersModel");
 
 const follower = {
     /**
@@ -13,27 +13,55 @@ const follower = {
      */
     follow: async (req, res) => {
         try {
-            let jwtVerify = jwt.verify(req.cookies.infoJwt, "m4riAL4M3j0r")
-            let conexion = await sql.sqlConexion();
-            let user = await Users.findOne({ where: { email: jwtVerify.email } });
-            res.json(await Followers.create({ fk_pk_user: req.body.fk_pk_user, fk_pk_user_follower: user.dataValues.id }));
-            conexion.close();
+            let jwtVerify = jwt.verify(req.cookies.infoJwt, "m4riAL4M3j0r");
+            var con = await conexion.abrir();
+            const userM = await UserModel.create(con);
+            let user = await userM.findOne({ where: { email: jwtVerify.email } });
+            const followerM = await followerModel.create(con);
+            res.json(await followerM.create({ fk_pk_user: req.body.fk_pk_user, fk_pk_user_follower: user.dataValues.id }));
         } catch (error) {
-            res.json(error);
+            console.log(error);
+        } finally {
+            await conexion.cerrar(con);
         }
     },
 
     unfollow: async (req, res) => {
         try {
             let jwtVerify = jwt.verify(req.cookies.infoJwt, "m4riAL4M3j0r")
-            let conexion = await sql.sqlConexion();
-            let user = await Users.findOne({ where: { email: jwtVerify.email } });
-            res.json(await Followers.destroy({ where: {fk_pk_user: req.body.fk_pk_user, fk_pk_user_follower: user.dataValues.id }}));
-            conexion.close();
+            var con = await conexion.abrir();
+            const userM = await UserModel.create(con);
+            let user = await userM.findOne({ where: { email: jwtVerify.email } });
+            const followerM = await followerModel.create(con);
+            res.json(await followerM.destroy({ where: {fk_pk_user: req.body.fk_pk_user, fk_pk_user_follower: user.dataValues.id }}));
         } catch (error) {
             res.json(error);
+        } finally {
+            await conexion.cerrar(con);
         }
     },
+
+    /**
+     * Funcion que devuelve true si el usuario que tiene la sesion iniciada esta siguiendo
+     * al usuario cuyo id se pasa en la peticion o false en el caso contrario.
+     * @param {*} req 
+     * @param {*} res 
+     */
+    isFollowing: async (req, res) =>{ 
+        try {
+            let jwtVerify = jwt.verify(req.cookies.infoJwt, "m4riAL4M3j0r");
+            var con = await conexion.abrir();
+            const userM = await UserModel.create(con);
+            let user = await userM.findOne({ where: { email: jwtVerify.email } });
+            const followerM = await followerModel.create(con);
+            let following = await followerM.findOne({ where: {fk_pk_user: req.body.fk_pk_user, fk_pk_user_follower: user.dataValues.id} });
+            following ? res.json(true): res.json(false);
+        } catch (error) {
+            res.json(error);
+        } finally {
+            await conexion.cerrar(con);
+        }
+    }
 }
 
 

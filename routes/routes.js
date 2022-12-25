@@ -14,6 +14,7 @@ router.post("/searchUsers", user.searchUsers);
 //FOLLOWERS
 router.post("/follow", follower.follow);
 router.post("/unfollow", follower.unfollow);
+router.post("/isFollowing", follower.isFollowing);
 
 //IMAGES
 router.post("/upload", image.upload)
