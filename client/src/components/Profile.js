@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
+import ProfileHeader from "./ProfileHeader";
+import ProfileBody from "./ProfileBody";
 
 const Profile = (props) => {
     return (
-        <div >
-            perfil
+        <div>
+            <ProfileHeader/>
+            <ProfileBody/>
         </div>
     );
 };
