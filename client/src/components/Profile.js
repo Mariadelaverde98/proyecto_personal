@@ -5,7 +5,7 @@ import ProfileBody from "./ProfileBody";
 const Profile = (props) => {
     return (
         <div>
-            <ProfileHeader user={props.user}/>
+            <ProfileHeader setLogueado={props.setLogueado} user={props.user}/>
             <ProfileBody user={props.user}/>
         </div>
     );

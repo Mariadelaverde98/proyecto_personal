@@ -57,7 +57,7 @@ const users = {
 
     logout: (req, res) => {
         res.clearCookie("infoJwt");
-        res.send("ok");
+        res.json("ok");
     },
 
     setProfilePhoto: async (req, res) => {

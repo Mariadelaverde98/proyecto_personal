@@ -3,6 +3,8 @@ import "./styles/ProfileHeader.css";
 import fotoperfil from "./img/fotoperfil.png";
 import ajustes from "./img/ajustes.png";
 import Offcanvas from 'react-bootstrap/Offcanvas';
+import atras from "./img/flecha.png";
+import Settings from "./Settings";
 
 const ProfileHeader = (props) => {
     const [firstTime, setFirstTime] = useState(true);
@@ -21,11 +23,13 @@ const ProfileHeader = (props) => {
             <h3>{props.user.username}</h3>
             <div onClick={handleShow} id="ajustes"><img src={ajustes} /></div>
             <Offcanvas id="profilesettings" show={show} onHide={handleClose} placement="end">
-                <Offcanvas.Header closeButton>
+                <Offcanvas.Header>
+                    <img id="atras" src={atras} onClick={() => setShow(false)}></img>
                     <Offcanvas.Title>Profile settings</Offcanvas.Title>
                 </Offcanvas.Header>
                 <Offcanvas.Body>
                     hola
+                    <Settings setLogueado={props.setLogueado}/>
                 </Offcanvas.Body>
             </Offcanvas>
 

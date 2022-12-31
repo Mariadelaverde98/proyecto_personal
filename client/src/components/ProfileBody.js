@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import "./styles/ProfileBody.css";
 import Modal from 'react-bootstrap/Modal';
+import atras from "./img/flecha.png";
 
 const ProfileBody = (props) => {
     const [publications, setPublications] = useState(null);
+    const [publiSelect, setPubliSelect] = useState(null);
     const [firstTime, setFirstTime] = useState(true);
     const [show, setShow] = useState(false);
     const [fullscreen, setFullscreen] = useState(true);
@@ -27,14 +29,17 @@ const ProfileBody = (props) => {
     return (
         <div id="profilebody">
             {publications ? publications.map((publi, i) => {
-                return (<div onClick={() => handleShow('sm-down')} key={i}><img src={publi.publication_path} /></div>)
+                return (<div onClick={() => {handleShow('sm-down'); setPubliSelect(publi)}} key={i}><img src={publi.publication_path} /></div>)
             }) : ""}
 
             <Modal show={show} fullscreen={fullscreen} onHide={() => setShow(false)}>
-                <Modal.Header closeButton>
+                <Modal.Header >
+                    <img id="atras" src={atras} onClick={()=>setShow(false)}></img>
                     <Modal.Title>Modal</Modal.Title>
                 </Modal.Header>
-                <Modal.Body>Modal body content</Modal.Body>
+                <Modal.Body>Modal body content
+                    {publiSelect ? <img src={publiSelect.publication_path} /> : null}
+                </Modal.Body>
             </Modal>
         </div>
     );

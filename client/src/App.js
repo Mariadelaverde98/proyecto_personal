@@ -12,7 +12,7 @@ function App() {
   if (logueado) {
     return(
       <div className="App">
-        <Home/>
+        <Home setLogueado={setLogueado}/>
       </div>
     )
   } else {

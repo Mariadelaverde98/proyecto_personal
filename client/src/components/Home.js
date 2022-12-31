@@ -14,7 +14,7 @@ const Home = (props) => {
         <div id="homecontainer">
             <Menu setView={setView} setUser={setUser}/>
             {view === "cam" ? <Cam setView={setView}/>:null}
-            {view === "profile" ? <Profile user={user}/>:null}
+            {view === "profile" ? <Profile setLogueado={props.setLogueado} user={user}/>:null}
             {view === "search" ? <Search/>:null}
             {view === "chat" ? <Chat/>:null}
         </div>
