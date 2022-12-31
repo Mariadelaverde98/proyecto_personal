@@ -3,6 +3,7 @@ import './App.css';
 import Login from "./components/Login";
 import Register from "./components/Register";
 import Home from "./components/Home";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   const [viewRegis, setViewRegis] = useState(false);

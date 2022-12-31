@@ -2,36 +2,36 @@ import React, { useEffect, useState } from "react";
 import "./styles/ProfileHeader.css";
 import fotoperfil from "./img/fotoperfil.png";
 import ajustes from "./img/ajustes.png";
+import Offcanvas from 'react-bootstrap/Offcanvas';
 
 const ProfileHeader = (props) => {
-    const [user, setUser] = useState();
-    const [username, setUsername] = useState();
+    const [firstTime, setFirstTime] = useState(true);
     const [photo, setPhoto] = useState(fotoperfil);
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
 
-    if (user === undefined) {
-        let datos = {
-            method: "get",
-            mode: "cors",
-            headers: { "Access-Control-Allow-Origin": "*", "Content-type": "application/json" },
-        };
-        fetch("/userSesion", datos)
-            .then((res) => res.json())
-            .then((res) => {
-                setUser(res);
-                setUsername(res.username)
-                console.log(res)
-                if (res.photo_profile !== null) {
-                    setPhoto(res.photo_profile);
-                }
-            });
+    if (props.user.photo_profile && firstTime) {
+        setPhoto(props.user.photo_profile);
+        setFirstTime(false);
     }
+
     return (
         <div id="cabeceraperfil">
-            <h3>{username}</h3>
-            <div id="ajustes"><img src={ajustes}/></div>
+            <h3>{props.user.username}</h3>
+            <div onClick={handleShow} id="ajustes"><img src={ajustes} /></div>
+            <Offcanvas id="profilesettings" show={show} onHide={handleClose} placement="end">
+                <Offcanvas.Header closeButton>
+                    <Offcanvas.Title>Profile settings</Offcanvas.Title>
+                </Offcanvas.Header>
+                <Offcanvas.Body>
+                    hola
+                </Offcanvas.Body>
+            </Offcanvas>
+
 
             <div id="datosperfil">
-                <div><img id="profilephoto" src={photo} /></div>
+                <div id="divprofilephoto"><img id="profilephoto" src={photo} /></div>
                 <div id="profileinfo">
                     <div>Followers: 100</div>
                     <div>Following: 100</div>

@@ -5,6 +5,19 @@
     border: 2px solid rgb(155, 143, 255);
 }
 
+#photouser img{
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: 100%;
+}
+
+#photouser {
+    width: 40px;
+    border-radius: 100%;
+    background-color: aliceblue;
+}
+
 .cuadroUser {
     display: flex;
     margin-left: 7.5%;

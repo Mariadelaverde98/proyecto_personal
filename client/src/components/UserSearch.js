@@ -55,7 +55,7 @@ const UserSearch = (props) => {
     return (
         <div className="cuadroUser">
             <div>
-                {props.img ? <img src={props.img} /> : <img src={fotoperfil} />}
+                {props.img ? <div id="photouser"><img src={props.img} /></div>  : <img src={fotoperfil} />}
                 <p>{props.username}</p>
             </div>
 

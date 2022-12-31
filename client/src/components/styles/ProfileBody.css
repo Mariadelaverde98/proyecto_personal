@@ -1,0 +1,21 @@
+#profilebody{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: minmax(100px, auto);
+    background-color: #343a40;
+    align-items: center;
+    justify-items: center;
+}
+
+#profilebody div img{
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+}
+
+#profilebody div {
+    height: 100%;
+    display: flex;
+    border: 1px solid rgb(155, 143, 255);
+    align-items: center;
+}

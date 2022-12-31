@@ -3,6 +3,7 @@
     height: 170px;
     background-color: #343a40;
     border-top: 1px solid rgb(155, 143, 255);
+    border-bottom: 1px solid rgb(155, 143, 255);
     color: aliceblue;
 }
 
@@ -12,11 +13,18 @@
     justify-content: space-around;
 }
 
-#profilephoto {
+#divprofilephoto {
     width: 100px;
     border-radius: 100%;
     background-color: aliceblue;
     border: 2px solid rgb(155, 143, 255);
+}
+
+#profilephoto {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: 100%;
 }
 
 #ajustes {
@@ -33,4 +41,10 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+}
+
+#profilesettings {
+    background-color: #343a40;
+    color: aliceblue;
+    width: 100%;
 }

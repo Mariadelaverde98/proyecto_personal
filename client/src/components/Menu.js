@@ -21,6 +21,7 @@ const Menu = (props) => {
             .then((res) => res.json())
             .then((res) => {
                 setUser(res);
+                props.setUser(res);
                 if (res.photo_profile !== null) {
                     setPhoto(res.photo_profile);
                 }
@@ -30,7 +31,7 @@ const Menu = (props) => {
 
     return (
         <nav>
-            <a onClick={() => props.setView("profile")}><img id="photo_menu" src={photo} /></a>
+            <a id="fotoperfilmenu" onClick={() => props.setView("profile")}><img id="photo_menu" src={photo} /></a>
             <a onClick={() => props.setView("search")}><img id="lupa" src={lupa} /></a>
             <a onClick={() => props.setView("cam")}><img id="logocam" src={logo} /></a>
             <a onClick={() => props.setView("chat")}><img id="chat" src={chat} /></a>

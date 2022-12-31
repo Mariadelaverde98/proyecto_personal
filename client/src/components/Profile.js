@@ -5,8 +5,8 @@ import ProfileBody from "./ProfileBody";
 const Profile = (props) => {
     return (
         <div>
-            <ProfileHeader/>
-            <ProfileBody/>
+            <ProfileHeader user={props.user}/>
+            <ProfileBody user={props.user}/>
         </div>
     );
 };

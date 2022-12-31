@@ -16,6 +16,10 @@ publicationModel = {
                 type: DataTypes.STRING,
                 allowNull: false
             },
+            title: {
+                type: DataTypes.STRING,
+                allowNull: true
+            },
             ubication: {
                 type: DataTypes.STRING,
                 allowNull: true
