@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./styles/ProfileBody.css";
 import Modal from 'react-bootstrap/Modal';
 import atras from "./img/flecha.png";
+import ModalPhoto from "./ModalPhoto";
 
 const ProfileBody = (props) => {
     const [publications, setPublications] = useState(null);
@@ -37,8 +38,8 @@ const ProfileBody = (props) => {
                     <img id="atras" src={atras} onClick={()=>setShow(false)}></img>
                     <Modal.Title>Modal</Modal.Title>
                 </Modal.Header>
-                <Modal.Body>Modal body content
-                    {publiSelect ? <img src={publiSelect.publication_path} /> : null}
+                <Modal.Body>
+                    {publiSelect ? <ModalPhoto publi={publiSelect}/>: null}
                 </Modal.Body>
             </Modal>
         </div>

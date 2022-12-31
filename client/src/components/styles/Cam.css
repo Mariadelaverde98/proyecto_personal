@@ -1,4 +1,48 @@
 #subirfoto{
-    width: 170px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    width: 70%;
     border-radius: 8px;
+}
+
+#subirfotocontainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#escribetitulo, #inputetiquetas, #publicar {
+    margin-top: 12px;
+    border: 1px solid rgb(155, 143, 255);
+    border-radius: 5px;
+    padding-left: 8px;
+    width: 85%;
+    height: 32px;
+}
+
+.photousertagged {
+    margin-left: 8px;
+    margin-right: 8px;
+    width: 35px;
+    border-radius: 100%;
+    background-color: aliceblue;
+    border: 2px solid rgb(155, 143, 255);
+}
+
+.photousertagged img {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: 100%;
+}
+
+.userstagged {
+    display: flex;
+    background-color: rgba(128, 128, 128, 0.37);
+    border-radius: 5px;
+    width: 85%;
+    border: 1px solid rgb(155, 143, 255);
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 8px;
 }

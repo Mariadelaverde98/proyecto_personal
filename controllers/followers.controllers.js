@@ -2,6 +2,7 @@ const conexion = require("../databases/mysql");
 const followerModel = require("../models/followersModel");
 const jwt = require("jsonwebtoken");
 const UserModel = require("../models/usersModel");
+const sequelize = require("sequelize");
 
 const follower = {
     /**
@@ -33,7 +34,7 @@ const follower = {
             const userM = await UserModel.create(con);
             let user = await userM.findOne({ where: { email: jwtVerify.email } });
             const followerM = await followerModel.create(con);
-            res.json(await followerM.destroy({ where: {fk_pk_user: req.body.fk_pk_user, fk_pk_user_follower: user.dataValues.id }}));
+            res.json(await followerM.destroy({ where: { fk_pk_user: req.body.fk_pk_user, fk_pk_user_follower: user.dataValues.id } }));
         } catch (error) {
             res.json(error);
         } finally {
@@ -47,21 +48,54 @@ const follower = {
      * @param {*} req 
      * @param {*} res 
      */
-    isFollowing: async (req, res) =>{ 
+    isFollowing: async (req, res) => {
         try {
             let jwtVerify = jwt.verify(req.cookies.infoJwt, "m4riAL4M3j0r");
             var con = await conexion.abrir();
             const userM = await UserModel.create(con);
             let user = await userM.findOne({ where: { email: jwtVerify.email } });
             const followerM = await followerModel.create(con);
-            let following = await followerM.findOne({ where: {fk_pk_user: req.body.fk_pk_user, fk_pk_user_follower: user.dataValues.id} });
-            following ? res.json(true): res.json(false);
+            let following = await followerM.findOne({ where: { fk_pk_user: req.body.fk_pk_user, fk_pk_user_follower: user.dataValues.id } });
+            following ? res.json(true) : res.json(false);
         } catch (error) {
             res.json(error);
         } finally {
             await conexion.cerrar(con);
         }
-    }
+    },
+
+    /**
+     * Devuelve el numero de followers y el numero de following del user
+     * con la sesion iniciada.
+     * @param {*} req 
+     * @param {*} res 
+     */
+    numFollows: async (req, res) => {
+        try {
+            let jwtVerify = jwt.verify(req.cookies.infoJwt, "m4riAL4M3j0r");
+            var con = await conexion.abrir();
+            const userM = await UserModel.create(con);
+            let user = await userM.findOne({ where: { email: jwtVerify.email } });
+            const followerM = await followerModel.create(con);
+            let followers = await followerM.findOne({
+                attributes: [[sequelize.fn('COUNT', sequelize.col('*')), 'numFollowers']],
+                where: { fk_pk_user: user.dataValues.id }
+            });
+            let following = await followerM.findOne({
+                attributes: [[sequelize.fn('COUNT', sequelize.col('*')), 'numFollowing']],
+                where: { fk_pk_user_follower: user.dataValues.id }
+            });
+            res.json({
+                followers: followers.dataValues.numFollowers,
+                following: following.dataValues.numFollowing
+            });
+        } catch (error) {
+            console.log(error)
+            res.json(error);
+        } finally {
+            await conexion.cerrar(con);
+        }
+    },
 }
 
 

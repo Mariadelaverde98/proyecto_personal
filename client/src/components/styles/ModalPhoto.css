@@ -1,0 +1,10 @@
+#photoModal{
+    width: 95%;
+    border-radius: 5px;
+}
+
+#photoModalBody{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

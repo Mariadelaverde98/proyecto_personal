@@ -10,12 +10,22 @@ const ProfileHeader = (props) => {
     const [firstTime, setFirstTime] = useState(true);
     const [photo, setPhoto] = useState(fotoperfil);
     const [show, setShow] = useState(false);
+    const [followers, setFollowers] = useState(0);
+    const [following, setFollowing] = useState(0);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
     if (props.user.photo_profile && firstTime) {
         setPhoto(props.user.photo_profile);
         setFirstTime(false);
+        fetch("/numFollows", {
+            method: "get",
+            mode: "cors",
+            headers: { "Access-Control-Allow-Origin": "*", "Content-type": "application/json" }
+        }).then((res) => res.json()).then(res => {
+            setFollowers(res.followers);
+            setFollowing(res.following);
+        })
     }
 
     return (
@@ -37,8 +47,8 @@ const ProfileHeader = (props) => {
             <div id="datosperfil">
                 <div id="divprofilephoto"><img id="profilephoto" src={photo} /></div>
                 <div id="profileinfo">
-                    <div>Followers: 100</div>
-                    <div>Following: 100</div>
+                    <div>Followers: {followers}</div>
+                    <div>Following: {following}</div>
                 </div>
 
             </div>

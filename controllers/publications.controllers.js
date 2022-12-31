@@ -40,14 +40,12 @@ const publication = {
             let user = await userM.findOne({ where: { email: jwtVerify.email } });
             const publicationM = await publicationsModel.create(con);
             let tags = await tag.getTags(user.id, con);
-            console.log(tags)
             const publications = await Promise.all(
                 tags.map(async (tag) => {
                   var t = await publicationM.findOne({ where: { id: tag.fk_pk_publication } });
                   return t.dataValues;
                 })
               )
-              console.log(publications)
             res.json(publications);
         } catch (error) {
             console.log(error);

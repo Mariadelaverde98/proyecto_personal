@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import fotovacia from "./img/img-vacia.png";
 import "./styles/Cam.css";
+import fotoperfil from "./img/fotoperfil.png";
 
 const Cam = (props) => {
     const [foto, setFoto] = useState(fotovacia);
@@ -73,17 +74,15 @@ const Cam = (props) => {
     }
 
     return (
-        <div >
+        <div id="subirfotocontainer">
             <label>
                 <input hidden id="files" name="file" type="file" onChange={(e) => { saveFoto(e) }} ></input>
                 <div>
                     <img id="subirfoto" src={foto} />
                 </div>
             </label>
-            <input type="text" placeholder="Escribe un título..." onChange={(e) => { setTitle(e.target.value) }} />
-
-            <p>¿Quien sale en esta foto?</p>
-            <input type="text" placeholder="username" onChange={(e) => buscar(e.target.value)} />
+            <input id="escribetitulo" type="text" placeholder="Escribe un título..." onChange={(e) => { setTitle(e.target.value) }} />
+            <input id="inputetiquetas" type="text" placeholder="¿Quien sale en esta foto?" onChange={(e) => buscar(e.target.value)} />
 
             {users.length ? users.map((user, i) => {
                 return (<div key={user.id} onClick={() => addUser(user)}>
@@ -91,11 +90,13 @@ const Cam = (props) => {
                 </div>)
             }) : ""}
             {usersTagged.length ? usersTagged.map((user, i) => {
-                return (<div key={user.id}>
-                    {user.username}
+                return (<div class="userstagged" key={user.id}>
+                    {user.photo_profile ? <div class="photousertagged"><img src={user.photo_profile} /></div> : <div class="photousertagged"><img src={fotoperfil} /></div> }
+                    <p>{user.username}</p>
+                    
                 </div>)
             }) : ""}
-            <button onClick={publicar}>Publicar</button>
+            <button id="publicar" onClick={publicar}>Publicar</button>
 
         </div>
     );
