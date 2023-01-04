@@ -69,12 +69,16 @@ const users = {
     },
 
     userSesion: async (req, res) => {
-        let con = await conexion.abrir();
-        const userr = await userModel.create(con);
-        let infojwt = await users.emailSesion(req, res);
-        let user = await userr.findOne({ where: { "email": infojwt.email } });
-        await conexion.cerrar(con);
-        res.json(user);
+        try {
+            let con = await conexion.abrir();
+            const userr = await userModel.create(con);
+            let infojwt = await users.emailSesion(req, res);
+            let user = await userr.findOne({ where: { "email": infojwt } });
+            await conexion.cerrar(con);
+            res.json(user);
+        } catch(error) {
+            console.log(error);
+        }
     },
 
     emailSesion: (req) => {

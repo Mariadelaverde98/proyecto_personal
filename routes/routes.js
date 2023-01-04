@@ -5,6 +5,7 @@ const image = require("../controllers/images.controllers");
 const publication = require("../controllers/publications.controllers");
 const tag = require("../controllers/tags.controllers");
 const chat = require("../controllers/chats.controllers");
+const msgChat = require("../controllers/msgsChats.controllers");
 
 //USERS
 router.post("/insertUser", user.insert);
@@ -33,7 +34,12 @@ router.get("/getPublicationsUser/:id", publication.getPublicationsUser2);
 router.post("/inserttag", tag.insert);
 
 //CHATS
-router.get("/getChat/:id", chat.getChat)
+router.get("/getChat/:id", chat.getChat);
+router.get("/getAllChats", chat.getAllChats);
+
+//CCHAT MESSAGES
+router.get("/getMsg/:idChat", msgChat.getMsgs);
+router.post("/insertMsg", msgChat.insert);
 
 module.exports = router;
 

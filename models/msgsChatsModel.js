@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const msgsChatsPlantilla = {
   idUser: Number,
   msg: String,
-  date: Date,
+  date: String,
   idChat: String
 };
 

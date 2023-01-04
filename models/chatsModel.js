@@ -1,7 +1,8 @@
 const mongoose = require("mongoose");
 
 const chatPlantilla = {
-  idUsuarios: Array
+  idUsuarios: Array,
+  users: Array
 };
 
 const chatSchema = mongoose.Schema(chatPlantilla, {

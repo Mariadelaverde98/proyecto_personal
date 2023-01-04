@@ -19,7 +19,7 @@ const Home = (props) => {
             {view === "cam" ? <Cam setView={setView}/>:null}
             {view === "profile" ? <Profile setLogueado={props.setLogueado} user={user}/>:null}
             {view === "search" ? <Search setView={setView} setUserSelect={setUserSelect}/>:null}
-            {view === "chat" ? <Chat/>:null}
+            {view === "chat" ? <Chat user={user}/>:null}
             {view === "friendProfile" ? <FriendProfile user={userSelect}/>:null}
         </div>
     );

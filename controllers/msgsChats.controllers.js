@@ -1,5 +1,6 @@
 const msgChatModel = require("../models/msgsChatsModel");
 const users = require("./users.controllers");
+const UserModel = require("../models/usersModel");
 
 const msgChat = {
     getMsgs: async (req, res) => {

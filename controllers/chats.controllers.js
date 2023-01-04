@@ -1,30 +1,38 @@
 const chatModel = require("../models/chatsModel");
 const users = require("../controllers/users.controllers");
-//require("../databases/mongo");
+const UserModel = require("../models/usersModel");
 
 const chat = {
     getChat: async (req, res) => {
-        let user1 = users.emailSesion(req);
-        var con = await conexion.abrir();
-        const userM = await UserModel.create(con);
-        user1 = await userM.findOne({ where: { email: user1 } });
-        await conexion.cerrar(con);
-        //let user2 = await userM.findOne({ where: { email: req.body.id } });
-        let chat = await chatModel.find({ idUsuarios: {$all: [user1.id, req.params.id]} });
-        if (!chat) {
-            chat = await chatModel.create({idUsuarios: [user1.id, req.params.id]});
-        } 
-        res.json(chat);
+        try {
+            let user1 = users.emailSesion(req);
+            var con = await conexion.abrir();
+            const userM = await UserModel.create(con);
+            user1 = await userM.findOne({ where: { email: user1 } });
+            let user2 = await userM.findOne({ where: { id: req.params.id } });
+            let chat = await chatModel.findOne({ idUsuarios: { $all: [user1.id, req.params.id] } });
+            if (!chat) {
+                chat = await chatModel.create({ idUsuarios: [user1.id, req.params.id], users: [user1, user2] });
+            }
+            res.json(chat);
+        } catch (error) {
+            res.json(error);
+        } finally {
+            await conexion.cerrar(con);
+        }
     },
     getAllChats: async (req, res) => {
-        let user1 = users.emailSesion(req);
-        var con = await conexion.abrir();
-        const userM = await UserModel.create(con);
-        user1 = await userM.findOne({ where: { email: user1 } });
-        await conexion.cerrar(con);
-        //let user2 = await userM.findOne({ where: { email: req.body.id } });
-        let chats = await chatModel.find({ idUsuarios: {$in: [user1.id]} });
-        res.json(chats);
+        try {
+            let user1 = users.emailSesion(req);
+            var con = await conexion.abrir();
+            const userM = await UserModel.create(con);
+            user1 = await userM.findOne({ where: { email: user1 } });
+            await conexion.cerrar(con);
+            let chats = await chatModel.find({ idUsuarios: { $in: [user1.id] } });
+            res.json(chats);
+        } catch(e) {
+            console.log(e)
+        }
     },
     deleteTarea: async (req, res) => {
         const { nombreTarea } = req.body;
