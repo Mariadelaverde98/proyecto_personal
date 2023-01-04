@@ -4,6 +4,7 @@ const user = require("../controllers/users.controllers");
 const image = require("../controllers/images.controllers");
 const publication = require("../controllers/publications.controllers");
 const tag = require("../controllers/tags.controllers");
+const chat = require("../controllers/chats.controllers");
 
 //USERS
 router.post("/insertUser", user.insert);
@@ -18,6 +19,7 @@ router.post("/follow", follower.follow);
 router.post("/unfollow", follower.unfollow);
 router.post("/isFollowing", follower.isFollowing);
 router.get("/numFollows", follower.numFollows);
+router.get("/numFollows/:id", follower.numFollows2);
 
 //IMAGES
 router.post("/upload", image.upload);
@@ -25,9 +27,13 @@ router.post("/upload", image.upload);
 //PUBLICATIONS
 router.post("/postpublication", publication.insert);
 router.get("/getPublicationsUser", publication.getPublicationsUser);
+router.get("/getPublicationsUser/:id", publication.getPublicationsUser2);
 
 //TAGS
 router.post("/inserttag", tag.insert);
+
+//CHATS
+router.get("/getChat/:id", chat.getChat)
 
 module.exports = router;
 

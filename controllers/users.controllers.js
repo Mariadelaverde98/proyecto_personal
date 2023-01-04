@@ -77,11 +77,11 @@ const users = {
         res.json(user);
     },
 
-    emailSesion: (req, res) => {
+    emailSesion: (req) => {
         var cookies = req.cookies;
         var token = cookies.infoJwt;
         let jwtVerify = jwt.verify(token, "m4riAL4M3j0r");
-        return jwtVerify;
+        return jwtVerify.email;
     },
 
     searchUsers: async (req, res) => {

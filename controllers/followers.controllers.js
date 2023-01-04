@@ -96,6 +96,32 @@ const follower = {
             await conexion.cerrar(con);
         }
     },
+
+    numFollows2: async (req, res) => {
+        try {
+            var con = await conexion.abrir();
+            const userM = await UserModel.create(con);
+            let user = await userM.findOne({ where: { id: req.params.id } });
+            const followerM = await followerModel.create(con);
+            let followers = await followerM.findOne({
+                attributes: [[sequelize.fn('COUNT', sequelize.col('*')), 'numFollowers']],
+                where: { fk_pk_user: user.dataValues.id }
+            });
+            let following = await followerM.findOne({
+                attributes: [[sequelize.fn('COUNT', sequelize.col('*')), 'numFollowing']],
+                where: { fk_pk_user_follower: user.dataValues.id }
+            });
+            res.json({
+                followers: followers.dataValues.numFollowers,
+                following: following.dataValues.numFollowing
+            });
+        } catch (error) {
+            console.log(error)
+            res.json(error);
+        } finally {
+            await conexion.cerrar(con);
+        }
+    },
 }
 
 

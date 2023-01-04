@@ -15,8 +15,10 @@ const ProfileHeader = (props) => {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    if (props.user.photo_profile && firstTime) {
-        setPhoto(props.user.photo_profile);
+    if (firstTime) {
+        if (props.user.photo_profile) {
+            setPhoto(props.user.photo_profile);
+        }
         setFirstTime(false);
         fetch("/numFollows", {
             method: "get",
@@ -26,7 +28,7 @@ const ProfileHeader = (props) => {
             setFollowers(res.followers);
             setFollowing(res.following);
         })
-    }
+    };
 
     return (
         <div id="cabeceraperfil">
@@ -39,7 +41,7 @@ const ProfileHeader = (props) => {
                 </Offcanvas.Header>
                 <Offcanvas.Body>
                     hola
-                    <Settings setLogueado={props.setLogueado}/>
+                    <Settings setLogueado={props.setLogueado} />
                 </Offcanvas.Body>
             </Offcanvas>
 

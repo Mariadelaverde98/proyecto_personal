@@ -34,6 +34,11 @@ const Cam = (props) => {
         setUsers([]);
     }
 
+    function quitarUser(user) {
+        let u = usersTagged.filter(us => us.id !== user.id);
+        setUsersTagged(u);
+    }
+
     function buscar(username) {
         if (username != "") {
             let datos = {
@@ -90,10 +95,10 @@ const Cam = (props) => {
                 </div>)
             }) : ""}
             {usersTagged.length ? usersTagged.map((user, i) => {
-                return (<div class="userstagged" key={user.id}>
-                    {user.photo_profile ? <div class="photousertagged"><img src={user.photo_profile} /></div> : <div class="photousertagged"><img src={fotoperfil} /></div> }
+                return (<div className="userstagged" key={user.id}>
+                    {user.photo_profile ? <div className="photousertagged"><img src={user.photo_profile} /></div> : <div class="photousertagged"><img src={fotoperfil} /></div> }
                     <p>{user.username}</p>
-                    
+                    <button onClick={() => quitarUser(user)}>X</button>
                 </div>)
             }) : ""}
             <button id="publicar" onClick={publicar}>Publicar</button>

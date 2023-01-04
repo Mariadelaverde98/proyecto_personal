@@ -24,9 +24,9 @@ const ProfileBody = (props) => {
         }).then((res) => res.json()).then(res => {
             setPublications(res);
             setFirstTime(false);
-        }
-        );
+        });
     }
+    
     return (
         <div id="profilebody">
             {publications ? publications.map((publi, i) => {

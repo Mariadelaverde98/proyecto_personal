@@ -52,6 +52,27 @@ const publication = {
         } finally {
             await conexion.cerrar(con);
         }
+    },
+
+    getPublicationsUser2: async (req, res) => {
+        try {
+            var con = await conexion.abrir();
+            const userM = await UserModel.create(con);
+            let user = await userM.findOne({ where: { id: req.params.id } });
+            const publicationM = await publicationsModel.create(con);
+            let tags = await tag.getTags(user.id, con);
+            const publications = await Promise.all(
+                tags.map(async (tag) => {
+                  var t = await publicationM.findOne({ where: { id: tag.fk_pk_publication } });
+                  return t.dataValues;
+                })
+              )
+            res.json(publications);
+        } catch (error) {
+            console.log(error);
+        } finally {
+            await conexion.cerrar(con);
+        }
     }
 }
 

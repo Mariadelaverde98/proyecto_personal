@@ -22,7 +22,7 @@ const Search = (props) => {
             <input id="inputsearch" type="text" placeholder="username" onChange={(e) => buscar(e.target.value)}/>
             <div id="userresults">
             {users ? users.map((user, i) => {
-                return <UserSearch key={user.id} id={user.id} img={user.photo_profile} username={user.username}/>;
+                return <UserSearch setView={props.setView} setUserSelect={props.setUserSelect} user={user} key={user.id} id={user.id} img={user.photo_profile} username={user.username}/>;
               })
             : ""}
             </div>

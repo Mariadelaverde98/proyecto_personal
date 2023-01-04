@@ -4,6 +4,7 @@ const router = require("./routes/routes")
 const cookieParser = require('cookie-parser');
 const multer = require("multer")
 const bodyParser = require("body-parser");
+require("./databases/mongo");
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {

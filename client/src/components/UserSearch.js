@@ -52,9 +52,14 @@ const UserSearch = (props) => {
             });
     }
 
+    function verPerfil() {
+        props.setUserSelect(props.user);
+        props.setView("friendProfile");
+    }
+
     return (
         <div className="cuadroUser">
-            <div>
+            <div onClick={verPerfil}>
                 {props.img ? <div id="photouser"><img src={props.img} /></div>  : <img src={fotoperfil} />}
                 <p>{props.username}</p>
             </div>
