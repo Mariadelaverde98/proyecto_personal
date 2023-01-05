@@ -22,6 +22,7 @@ const Chat = (props) => {
             .then((res) => res.json())
             .then((res) => {
                 setChats(res);
+                console.log(res)
             });
     }, []);
 
@@ -68,7 +69,7 @@ const Chat = (props) => {
     function selectChat(chat) {
         setChatSelect(chat);
         handleShow('sm-down');
-        let u = chat.users.filter(user => user.dataValues.id !== props.user.id)[0];
+        let u = chat.chat.users.filter(user => user.dataValues.id !== props.user.id)[0];
         setUserSelect(u.dataValues)
     }
 
@@ -87,7 +88,7 @@ const Chat = (props) => {
                 todos los chats
                 {chats.length ? chats.map((chat, i) => {
                     return (<div onClick={() => { selectChat(chat) }} key={i}>
-                        {chat.users.filter(user => user.dataValues.id !== props.user.id)[0].dataValues.username}
+                        {chat.chat.users.filter(user => user.dataValues.id !== props.user.id)[0].dataValues.username}
                     </div>)
                 }) : ""}
             </div>
@@ -98,7 +99,7 @@ const Chat = (props) => {
                     <Modal.Title>{userSelect ? userSelect.username : null}</Modal.Title>
                 </Modal.Header>
                 <Modal.Body id="modalbody">
-                    {chatSelect ? <MensajesChat user={props.user} chat={chatSelect} /> : null}
+                    {chatSelect ? <MensajesChat user={props.user} chat={chatSelect.chat} msgs={chatSelect.msgs} /> : null}
                 </Modal.Body>
             </Modal>
         </div>

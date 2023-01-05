@@ -24,6 +24,7 @@ const MensajesChat = (props) => {
             mode: "cors",
             headers: { "Access-Control-Allow-Origin": "*", "Content-type": "application/json" },
         };
+        console.log(props.chat._id)
         fetch("/getMsg/" + props.chat._id, datos)
             .then((res) => res.json())
             .then((res) => {
@@ -36,7 +37,8 @@ const MensajesChat = (props) => {
 
         const newMessage = {
             msg: message,
-            idChat: props.chat.id
+            idChat: props.chat._id,
+            idUser: props.user.id
         }
         socket.emit('message', message, newMessage.idChat)
         setMessages([...messages, newMessage])
@@ -61,7 +63,7 @@ const MensajesChat = (props) => {
                     <div key={i} className={`d-flex ${msg.idUser === props.user.id ? "justify-content-end" : "justify-content-start"}`}>
                         <div className={`card mb-3 shadow border-1 ${msg.idUser === props.user.id ?  "bg-light":"bg-primary bg-opacity-25"}`}>
                             <div className="card-body p-1">
-                                <small className="text-muted">{msg.msg}{msg.idUser}{props.user.id}</small>
+                                <small className="text-muted">{msg.msg}</small>
                             </div>
                         </div>
                     </div>)
