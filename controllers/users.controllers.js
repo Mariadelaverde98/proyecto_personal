@@ -63,8 +63,8 @@ const users = {
     setProfilePhoto: async (req, res) => {
         let con = await conexion.abrir();
         const user = await userModel.create(con);
-        let infojwt = await users.emailSesion(req, res);
-        await user.update({ photo_profile: req.body.photo }, { where: { email: infojwt.email } });
+        let infojwt = await users.emailSesion(req);
+        await user.update({ photo_profile: req.body.photo }, { where: { email: infojwt } });
         await conexion.cerrar(con);
     },
 
@@ -91,7 +91,12 @@ const users = {
     searchUsers: async (req, res) => {
         let con = await conexion.abrir();
         const user = await userModel.create(con);
-        let users = await user.findAll({ limit: 10, where: { "username": { [Op.like]: `${req.body.username}%` } } });
+        var cookies = req.cookies;
+        var token = cookies.infoJwt;
+        let email = jwt.verify(token, "m4riAL4M3j0r").email;
+        let users = await user.findAll({ limit: 10, where: { "username": { [Op.like]: `${req.body.username}%` }, email: {
+            [Op.ne]: email,
+          }, } });
         await conexion.cerrar(con);
         res.json(users);
     },

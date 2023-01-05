@@ -24,7 +24,6 @@ const MensajesChat = (props) => {
             mode: "cors",
             headers: { "Access-Control-Allow-Origin": "*", "Content-type": "application/json" },
         };
-        console.log(props.chat._id)
         fetch("/getMsg/" + props.chat._id, datos)
             .then((res) => res.json())
             .then((res) => {
@@ -52,7 +51,7 @@ const MensajesChat = (props) => {
             headers: { "Access-Control-Allow-Origin": "*", "Content-type": "application/json" },
         };
 
-        fetch("/insertMsg", datos);
+        fetch("/insertMsg", datos).then((res) => res.json());
         document.getElementById("modalbody").scrollTo(0, document.getElementById("modalbody").scrollTop)
     }
 

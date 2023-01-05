@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import Modal from 'react-bootstrap/Modal';
 import atras from "./img/flecha.png";
 import MensajesChat from "./MensajesChat";
+import fotoperfil from "./img/fotoperfil.png";
+import "./styles/Chat.css";
 
 const Chat = (props) => {
     const [users, setUsers] = useState([]);
@@ -31,12 +33,12 @@ const Chat = (props) => {
         setShow(true);
     }
 
-   /*  useEffect(() => {
-        if (show) {
-            document.getElementById("modalbody").scrollTo(0, document.getElementById("modalbody").scrollTop)
-        }
-    }, [show]);
- */
+    /*  useEffect(() => {
+         if (show) {
+             document.getElementById("modalbody").scrollTo(0, document.getElementById("modalbody").scrollTop)
+         }
+     }, [show]);
+  */
     function buscar(username) {
         let datos = {
             method: "post",
@@ -53,7 +55,6 @@ const Chat = (props) => {
 
     function select(user) {
         setUserSelect(user);
-        handleShow('sm-down');
         let datos = {
             method: "get",
             mode: "cors",
@@ -62,7 +63,12 @@ const Chat = (props) => {
         fetch("/getChat/" + user.id, datos)
             .then((res) => res.json())
             .then((res) => {
-                setChatSelect(res);
+                let a = {
+                    chat: res,
+                    msgs: []
+                }
+                setChatSelect(a);
+                handleShow('sm-down');
             });
     }
 
@@ -70,7 +76,20 @@ const Chat = (props) => {
         setChatSelect(chat);
         handleShow('sm-down');
         let u = chat.chat.users.filter(user => user.dataValues.id !== props.user.id)[0];
-        setUserSelect(u.dataValues)
+        setUserSelect(u.dataValues);
+    }
+
+    function miniaturaChat(user, chat) {
+        return (
+            <div className="miniaturachat">
+                {user.photo_profile ? <div className="photouserchat"><img src={user.photo_profile} /></div> : <div className="photouserchat"><img src={fotoperfil} /></div>}
+
+                <div>
+                    <p className="usernamechat">{user.username}</p>
+                    {chat.msgs.length ? <p className="ultimomsg">{chat.msgs[chat.msgs.length - 1].msg}</p> : null}
+                </div>
+            </div>
+        )
     }
 
     return (
@@ -88,7 +107,7 @@ const Chat = (props) => {
                 todos los chats
                 {chats.length ? chats.map((chat, i) => {
                     return (<div onClick={() => { selectChat(chat) }} key={i}>
-                        {chat.chat.users.filter(user => user.dataValues.id !== props.user.id)[0].dataValues.username}
+                        {miniaturaChat(chat.chat.users.filter(user => user.dataValues.id !== props.user.id)[0].dataValues, chat)}
                     </div>)
                 }) : ""}
             </div>
@@ -96,7 +115,9 @@ const Chat = (props) => {
             <Modal show={show} fullscreen={fullscreen} onHide={() => setShow(false)}>
                 <Modal.Header >
                     <img id="atras" src={atras} onClick={() => setShow(false)}></img>
-                    <Modal.Title>{userSelect ? userSelect.username : null}</Modal.Title>
+                    <Modal.Title>
+                        {userSelect ? userSelect.username : null}
+                    </Modal.Title>
                 </Modal.Header>
                 <Modal.Body id="modalbody">
                     {chatSelect ? <MensajesChat user={props.user} chat={chatSelect.chat} msgs={chatSelect.msgs} /> : null}

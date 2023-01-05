@@ -1,0 +1,33 @@
+.photouserchat img{
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: 100%;
+}
+
+.photouserchat {
+    width: 40px;
+    border-radius: 100%;
+    background-color: aliceblue;
+    border: 2px solid rgb(155, 143, 255);
+}
+.miniaturachat {
+    display: flex;
+    margin-left: 7.5%;
+    margin-top: 10px;
+    width: 85%;
+    align-items: center;
+}
+
+.ultimomsg {
+    font-size: 12px;
+    color: grey;
+    margin: 0;
+    margin-left: 6px;
+}
+
+p.usernamechat {
+    margin: 0;
+    margin-left: 4px;
+    text-transform: capitalize;
+}

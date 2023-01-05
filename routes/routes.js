@@ -39,7 +39,7 @@ router.get("/getChat/:id", chat.getChat);
 router.get("/getAllChats", chat.getAllChats);
 
 //CCHAT MESSAGES
-router.get("/getMsg/:idChat", msgChat.getMsgs);
+router.get("/getMsg/:id", msgChat.getMsgs);
 router.post("/insertMsg", msgChat.insert);
 
 //COMMENTS
