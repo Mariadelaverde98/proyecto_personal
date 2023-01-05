@@ -98,7 +98,7 @@ const Chat = (props) => {
                     <Modal.Title>{userSelect ? userSelect.username : null}</Modal.Title>
                 </Modal.Header>
                 <Modal.Body id="modalbody">
-                    {chatSelect ? <MensajesChat user={userSelect} chat={chatSelect} /> : null}
+                    {chatSelect ? <MensajesChat user={props.user} chat={chatSelect} /> : null}
                 </Modal.Body>
             </Modal>
         </div>

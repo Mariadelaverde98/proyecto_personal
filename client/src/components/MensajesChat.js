@@ -28,6 +28,7 @@ const MensajesChat = (props) => {
             .then((res) => res.json())
             .then((res) => {
                 setStoredMessages(res);
+                console.log(res)
             });
     }, []);
 
@@ -58,9 +59,9 @@ const MensajesChat = (props) => {
             {storedMessages ? storedMessages.map((msg, i) => {
                 return (
                     <div key={i} className={`d-flex ${msg.idUser === props.user.id ? "justify-content-end" : "justify-content-start"}`}>
-                        <div className={`card mb-3 shadow border-1 ${msg.idUser === props.user.id ? "bg-primary bg-opacity-25" : "bg-light"}`}>
+                        <div className={`card mb-3 shadow border-1 ${msg.idUser === props.user.id ?  "bg-light":"bg-primary bg-opacity-25"}`}>
                             <div className="card-body p-1">
-                                <small className="text-muted">{msg.msg}</small>
+                                <small className="text-muted">{msg.msg}{msg.idUser}{props.user.id}</small>
                             </div>
                         </div>
                     </div>)
@@ -68,7 +69,7 @@ const MensajesChat = (props) => {
 
             {messages.map((message, index) => (
                 <div key={index} className={`d-flex ${message.idUser === props.user.id ? "justify-content-end" : "justify-content-start"}`}>
-                    <div className={`card mb-3 shadow border-1 ${message.idUser === props.user.id ? "bg-primary bg-opacity-25" : "bg-light"}`}>
+                    <div className={`card mb-3 shadow border-1 ${message.idUser === props.user.id ? "bg-light": "bg-primary bg-opacity-25"}`}>
                         <div className="card-body p-1">
                             <small className="text-muted">{message.msg}</small>
                         </div>

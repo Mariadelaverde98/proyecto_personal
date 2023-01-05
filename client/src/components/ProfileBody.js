@@ -39,7 +39,7 @@ const ProfileBody = (props) => {
                     <Modal.Title>Modal</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    {publiSelect ? <ModalPhoto publi={publiSelect}/>: null}
+                    {publiSelect ? <ModalPhoto publi={publiSelect} user={props.user}/>: null}
                 </Modal.Body>
             </Modal>
         </div>

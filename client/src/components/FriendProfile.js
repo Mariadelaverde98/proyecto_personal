@@ -65,7 +65,7 @@ const FriendProfile = (props) => {
                         <Modal.Title>Modal</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                        {publiSelect ? <ModalPhoto publi={publiSelect} /> : null}
+                        {publiSelect ? <ModalPhoto user={props.usersesion} publi={publiSelect} /> : null}
                     </Modal.Body>
                 </Modal>
             </div>
