@@ -6,6 +6,7 @@ const publication = require("../controllers/publications.controllers");
 const tag = require("../controllers/tags.controllers");
 const chat = require("../controllers/chats.controllers");
 const msgChat = require("../controllers/msgsChats.controllers");
+const comment = require("../controllers/coments.controller");
 
 //USERS
 router.post("/insertUser", user.insert);
@@ -40,6 +41,10 @@ router.get("/getAllChats", chat.getAllChats);
 //CCHAT MESSAGES
 router.get("/getMsg/:idChat", msgChat.getMsgs);
 router.post("/insertMsg", msgChat.insert);
+
+//COMMENTS
+router.post("/addComment", comment.insert);
+router.get("/getComments/:id", comment.get);
 
 module.exports = router;
 

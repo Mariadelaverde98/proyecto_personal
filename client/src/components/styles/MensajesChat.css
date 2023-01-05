@@ -1,9 +1,9 @@
-#inputsearch.inputchat {
+.inputchat {
     position: fixed;
     bottom: 8px;
+    display: flex;
 }
 
 #MensajesChatcontainer {
-
     overflow-y: scroll;
 }

@@ -12,7 +12,7 @@ const Chat = (props) => {
     const [chats, setChats] = useState([]);
 
     useEffect(() => {
-        
+
         let datos = {
             method: "get",
             mode: "cors",
@@ -30,12 +30,12 @@ const Chat = (props) => {
         setShow(true);
     }
 
-    useEffect(() => {
-        if(show) {
+   /*  useEffect(() => {
+        if (show) {
             document.getElementById("modalbody").scrollTo(0, document.getElementById("modalbody").scrollTop)
         }
     }, [show]);
-
+ */
     function buscar(username) {
         let datos = {
             method: "post",
@@ -66,7 +66,7 @@ const Chat = (props) => {
     }
 
     function selectChat(chat) {
-        setChatSelect(chat); 
+        setChatSelect(chat);
         handleShow('sm-down');
         let u = chat.users.filter(user => user.dataValues.id !== props.user.id)[0];
         setUserSelect(u.dataValues)
