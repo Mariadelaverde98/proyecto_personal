@@ -15,6 +15,7 @@ router.get("/logout", user.logout);
 router.post("/setProfilePhoto", user.setProfilePhoto);
 router.get("/userSesion", user.userSesion);
 router.post("/searchUsers", user.searchUsers);
+router.post("/updateUser", user.updateUser);
 
 //FOLLOWERS
 router.post("/follow", follower.follow);

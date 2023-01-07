@@ -45,7 +45,7 @@ const users = {
         await conexion.cerrar(con);
         if (user) {
             if (bcryptjs.compareSync(req.body.password_, user.dataValues.password_)) { //compara la contraseña encriptada en la base de datos con la contraseña introducida
-                res.cookie("infoJwt", jwt.sign({ email: req.body.email }, "m4riAL4M3j0r"));
+                res.cookie("infoJwt", jwt.sign({ email: req.body.email, id: req.body.id }, "m4riAL4M3j0r"));
                 res.json("ok");
             } else {
                 res.json("password incorrecta");
@@ -76,7 +76,7 @@ const users = {
             let user = await userr.findOne({ where: { "email": infojwt } });
             await conexion.cerrar(con);
             res.json(user);
-        } catch(error) {
+        } catch (error) {
             console.log(error);
         }
     },
@@ -94,11 +94,30 @@ const users = {
         var cookies = req.cookies;
         var token = cookies.infoJwt;
         let email = jwt.verify(token, "m4riAL4M3j0r").email;
-        let users = await user.findAll({ limit: 10, where: { "username": { [Op.like]: `${req.body.username}%` }, email: {
-            [Op.ne]: email,
-          }, } });
+        let users = await user.findAll({
+            limit: 10, where: {
+                "username": { [Op.like]: `${req.body.username}%` }, email: {
+                    [Op.ne]: email,
+                },
+            }
+        });
         await conexion.cerrar(con);
         res.json(users);
+    },
+
+    updateUser: async (req, res) => {
+        try {
+            let con = await conexion.abrir();
+            const user = await userModel.create(con);
+            var cookies = req.cookies;
+            var token = cookies.infoJwt;
+            let jwtVerify = jwt.verify(token, "m4riAL4M3j0r");
+            res.json(await user.update({ name_: req.body.name_, username: req.body.username, email: req.body.email }, { where: { id: jwtVerify.id } }))
+        } catch {
+            res.json("error");
+        } finally {
+            await conexion.cerrar(con);
+        }
     },
 }
 
