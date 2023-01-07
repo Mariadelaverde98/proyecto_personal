@@ -7,12 +7,23 @@ import Search from "./Search";
 import Chat from "./Chat";
 import Cam from "./Cam";
 import FriendProfile from "./FriendProfile";
+import Modal from 'react-bootstrap/Modal';
+import atras from "./img/flecha.png";
+import ModalPhoto from "./ModalPhoto";
 
 const Home = (props) => {
     const [view, setView] = useState("home");
     const [user, setUser] = useState();
     const [userSelect, setUserSelect] = useState(null);
     const [userPublis, setUserPublis] = useState([]);
+    const [publiSelect, setPubliSelect] = useState(null);
+    const [show, setShow] = useState(false);
+    const [fullscreen, setFullscreen] = useState(true);
+
+    function handleShow(breakpoint) {
+        setFullscreen(breakpoint);
+        setShow(true);
+    }
 
     useEffect(() => {
         let datos = {
@@ -43,7 +54,7 @@ const Home = (props) => {
 
                                             <p>{user.user.username}</p>
                                         </div>
-                                        <div className="publictioncontainer">
+                                        <div className="publictioncontainer" onClick={() => {handleShow('sm-down'); setPubliSelect(publi)}}>
                                             <img src={publi.publication_path} alt="" />
                                         </div>
 
@@ -69,7 +80,14 @@ const Home = (props) => {
             {view === "friendProfile" ? <FriendProfile usersesion={user} user={userSelect} /> : null}
             {view === "home" ? home() : null}
 
-
+            <Modal id="modalfoto" show={show} fullscreen={fullscreen} onHide={() => setShow(false)}>
+                <Modal.Header >
+                    <img id="atras" src={atras} onClick={()=>setShow(false)}></img>
+                </Modal.Header>
+                <Modal.Body>
+                    {publiSelect ? <ModalPhoto publi={publiSelect} user={props.user}/>: null}
+                </Modal.Body>
+            </Modal>
         </div>
     );
 };

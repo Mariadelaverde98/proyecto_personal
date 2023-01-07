@@ -43,7 +43,10 @@ const ModalPhoto = (props) => {
 
     return (
         <div id="photoModalBody">
-            <img id="photoModal" src={props.publi.publication_path} />
+            <div id="photomodalcontainer">
+                <img id="photoModal" src={props.publi.publication_path} />
+            </div>
+
             <p>{props.publi.title}</p>
 
             {storedComments.length ?
@@ -55,7 +58,7 @@ const ModalPhoto = (props) => {
             {comments.map((com, i) => (
                 <div key={i}>{com.text}</div>)
             )}
-            <input type="text" placeholder="Escribe un comentario..." onChange={(e) => setComment(e.target.value)} value={comment} />
+            <input id="inputmodal" type="text" placeholder="Escribe un comentario..." onChange={(e) => setComment(e.target.value)} value={comment} />
             <button onClick={comentar}>comentar</button>
         </div>
     );

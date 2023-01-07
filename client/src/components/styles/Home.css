@@ -53,3 +53,8 @@ div#homecontainer {
 #homepublicationscontainer > div > div > p {
     margin-left: 8px;
 }
+
+#modalfoto > div{
+    background-color: #343a40;
+    color: aliceblue;
+}

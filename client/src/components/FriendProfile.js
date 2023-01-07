@@ -59,10 +59,9 @@ const FriendProfile = (props) => {
                     return (<div onClick={() => { handleShow('sm-down'); setPubliSelect(publi) }} key={i}><img src={publi.publication_path} /></div>)
                 }) : ""}
 
-                <Modal show={show} fullscreen={fullscreen} onHide={() => setShow(false)}>
+                <Modal id="modalfoto" show={show} fullscreen={fullscreen} onHide={() => setShow(false)}>
                     <Modal.Header >
                         <img id="atras" src={atras} onClick={() => setShow(false)}></img>
-                        <Modal.Title>Modal</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
                         {publiSelect ? <ModalPhoto user={props.usersesion} publi={publiSelect} /> : null}
