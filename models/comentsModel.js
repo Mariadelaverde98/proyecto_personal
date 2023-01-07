@@ -4,7 +4,8 @@ const commentPlantilla = {
   idUser: Number,
   idPublication: Number,
   comment: String,
-  date: Date
+  date: Date,
+  username: String
 };
 
 const commentSchema = mongoose.Schema(commentPlantilla, {

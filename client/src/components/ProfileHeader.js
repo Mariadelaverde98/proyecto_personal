@@ -40,8 +40,7 @@ const ProfileHeader = (props) => {
                     <Offcanvas.Title>Profile settings</Offcanvas.Title>
                 </Offcanvas.Header>
                 <Offcanvas.Body>
-                    hola
-                    <Settings setLogueado={props.setLogueado} />
+                    <Settings setLogueado={props.setLogueado} user={props.user} />
                 </Offcanvas.Body>
             </Offcanvas>
 

@@ -52,14 +52,17 @@ const ModalPhoto = (props) => {
             {storedComments.length ?
                 storedComments.map((comment, i) => {
                     return (
-                        <div key={i}>{comment.comment}</div>)
+                        <div key={i}><strong>{comment.username}</strong>: {comment.comment}</div>)
                 })
                 : "No hay comentarios"}
             {comments.map((com, i) => (
-                <div key={i}>{com.text}</div>)
+                <div key={i}><strong>{com.username}</strong>: {com.text}</div>)
             )}
-            <input id="inputmodal" type="text" placeholder="Escribe un comentario..." onChange={(e) => setComment(e.target.value)} value={comment} />
-            <button onClick={comentar}>comentar</button>
+            <div id="inputcontainer">
+                <input id="inputmodal" type="text" placeholder="Write a comment..." onChange={(e) => setComment(e.target.value)} value={comment} />
+                <button onClick={comentar}>Send</button>
+            </div>
+
         </div>
     );
 };

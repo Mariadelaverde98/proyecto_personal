@@ -85,7 +85,7 @@ const Home = (props) => {
                     <img id="atras" src={atras} onClick={()=>setShow(false)}></img>
                 </Modal.Header>
                 <Modal.Body>
-                    {publiSelect ? <ModalPhoto publi={publiSelect} user={props.user}/>: null}
+                    {publiSelect ? <ModalPhoto publi={publiSelect} user={user}/>: null}
                 </Modal.Body>
             </Modal>
         </div>
