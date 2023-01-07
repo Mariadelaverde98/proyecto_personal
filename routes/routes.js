@@ -30,6 +30,7 @@ router.post("/upload", image.upload);
 router.post("/postpublication", publication.insert);
 router.get("/getPublicationsUser", publication.getPublicationsUser);
 router.get("/getPublicationsUser/:id", publication.getPublicationsUser2);
+router.get("/getPublicationsAllUsers", publication.getPublicationsAllUsers)
 
 //TAGS
 router.post("/inserttag", tag.insert);

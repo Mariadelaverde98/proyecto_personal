@@ -122,6 +122,21 @@ const follower = {
             await conexion.cerrar(con);
         }
     },
+
+    following: async (req, con) => {
+        try {
+            let jwtVerify = jwt.verify(req.cookies.infoJwt, "m4riAL4M3j0r");
+            const userM = await UserModel.create(con);
+            let user = await userM.findOne({ where: { email: jwtVerify.email } });
+            const followerM = await followerModel.create(con);
+            let following = await followerM.findAll({
+                where: { fk_pk_user_follower: user.dataValues.id }
+            });
+            return following;
+        } catch (error) {
+            return error;
+        } 
+    },
 }
 
 

@@ -1,3 +1,55 @@
 div#homecontainer {
     width: 100%;
 }
+
+.fotousershome div {
+    width: 35px;
+    border-radius: 100%;
+    background-color: aliceblue;
+    border: 2px solid rgb(155, 143, 255);
+    margin: 6px;
+}
+
+.fotousershome div img {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: 100%;
+}
+
+.fotousershome {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#homepublicationscontainer {
+    border-top: 1px solid rgb(155, 143, 255);
+    background-color: #343a40;
+}
+
+.fotousershome p {
+    text-transform: capitalize;
+    color: aliceblue;
+}
+
+.publictioncontainer {
+    width: 100%;
+}
+
+.publictioncontainer img {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+}
+
+#homepublicationscontainer > div > div {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    color: aliceblue;
+}
+
+#homepublicationscontainer > div > div > p {
+    margin-left: 8px;
+}

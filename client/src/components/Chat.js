@@ -14,7 +14,10 @@ const Chat = (props) => {
     const [chats, setChats] = useState([]);
 
     useEffect(() => {
+        getChats();
+    }, []);
 
+    function getChats() {
         let datos = {
             method: "get",
             mode: "cors",
@@ -26,7 +29,7 @@ const Chat = (props) => {
                 setChats(res);
                 console.log(res)
             });
-    }, []);
+    }
 
     function handleShow(breakpoint) {
         setFullscreen(breakpoint);
@@ -114,7 +117,7 @@ const Chat = (props) => {
 
             <Modal show={show} fullscreen={fullscreen} onHide={() => setShow(false)}>
                 <Modal.Header >
-                    <img id="atras" src={atras} onClick={() => setShow(false)}></img>
+                    <img id="atras" src={atras} onClick={() => {setShow(false); getChats()}}></img>
                     <Modal.Title>
                         {userSelect ? userSelect.username : null}
                     </Modal.Title>
