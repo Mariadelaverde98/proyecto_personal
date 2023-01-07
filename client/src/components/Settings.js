@@ -4,7 +4,9 @@ import "./styles/Settings.css";
 
 const Settings = (props) => {
     const [foto, setFoto] = useState(fotoperfil);
-    
+    const [name_, setName_] = useState(props.user.name_);
+    const [username, setUsername] = useState(props.user.username);
+    const [email, setEmail] = useState(props.user.email);
 
     useEffect(() => {
         if (props.user.photo_profile) setFoto(props.user.photo_profile)
@@ -46,17 +48,17 @@ const Settings = (props) => {
     }
 
     function update() {
-        updateUser
-        fetch("/logout", {
+        fetch("/updateUser", {
             method: "post",
             body: JSON.stringify({
-
-            })
+                name_,
+                username,
+                email
+            }),
             mode: "cors",
             headers: { "Access-Control-Allow-Origin": "*", "Content-type": "application/json" },
         }).then((res) => res.json()).then(res => {
-            console.log(res)
-            props.setLogueado(false);
+            console.log(res);
         }
         );
     }
@@ -74,20 +76,20 @@ const Settings = (props) => {
                 <div id="datasettings">
                     <label>
                         <strong>Name:</strong> <br></br>
-                        <input type="text" defaultValue={props.user.name_}  />
+                        <input type="text" defaultValue={props.user.name_}  onChange={(e) => setName_(e.target.value)}/>
                     </label>
                     <label>
                         <strong>Username:</strong> <br></br>
-                        <input type="text" defaultValue={props.user.username} />
+                        <input type="text" defaultValue={props.user.username} onChange={(e) => setUsername(e.target.value)}/>
                     </label>
                     <label>
                         <strong>Email:</strong> <br></br>
-                        <input type="text" defaultValue={props.user.email} />
+                        <input type="text" defaultValue={props.user.email} onChange={(e) => setEmail(e.target.value)}/>
                     </label>
                 </div>
             </form>
             <div id="settingbuttons">
-                <button className="settingbutton">Save changes</button>
+                <button onClick={update} className="settingbutton">Save changes</button>
                 <button className="settingbutton" onClick={cerrarSesion}>Log out</button>
             </div>
         </div>

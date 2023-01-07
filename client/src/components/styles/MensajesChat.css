@@ -7,3 +7,30 @@
 #MensajesChatcontainer {
     overflow-y: scroll;
 }
+
+.inputchat button img{
+    width: 28px;
+    background-color: rgba(240, 248, 255, 0);
+}
+
+.inputchat button {
+    background-color: rgba(240, 248, 255, 0);
+    border: none;
+}
+
+.inputchat {
+    margin-top: 12px;
+    border: 1px solid rgb(155, 143, 255);
+    border-radius: 5px;
+    padding-left: 8px;
+    width: 100%;
+    height: 32px;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+}
+
+.inputchat input{
+    border: none;
+    width: 100%;
+}

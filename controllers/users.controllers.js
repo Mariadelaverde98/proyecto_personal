@@ -27,7 +27,7 @@ const users = {
             const user = await userModel.create(con);
             let userr = await user.create({ name_, username, email, password_: await bcryptjs.hash(password_, 8) })
             await conexion.cerrar(con);
-            res.cookie("infoJwt", jwt.sign({ email: req.body.email }, "m4riAL4M3j0r"));
+            res.cookie("infoJwt", jwt.sign({ email: req.body.email, id: user.id }, "m4riAL4M3j0r"));
             res.json(userr);
         } catch (ValidationError) {
             if (ValidationError.fields && ValidationError.fields.email) {
@@ -45,7 +45,7 @@ const users = {
         await conexion.cerrar(con);
         if (user) {
             if (bcryptjs.compareSync(req.body.password_, user.dataValues.password_)) { //compara la contraseña encriptada en la base de datos con la contraseña introducida
-                res.cookie("infoJwt", jwt.sign({ email: req.body.email, id: req.body.id }, "m4riAL4M3j0r"));
+                res.cookie("infoJwt", jwt.sign({ email: req.body.email, id: user.id }, "m4riAL4M3j0r"));
                 res.json("ok");
             } else {
                 res.json("password incorrecta");
@@ -107,14 +107,16 @@ const users = {
 
     updateUser: async (req, res) => {
         try {
-            let con = await conexion.abrir();
+            var con = await conexion.abrir();
             const user = await userModel.create(con);
             var cookies = req.cookies;
             var token = cookies.infoJwt;
             let jwtVerify = jwt.verify(token, "m4riAL4M3j0r");
+            console.log(jwtVerify)
             res.json(await user.update({ name_: req.body.name_, username: req.body.username, email: req.body.email }, { where: { id: jwtVerify.id } }))
-        } catch {
-            res.json("error");
+        } catch(error) {
+            console.log(error);
+            res.json(error);
         } finally {
             await conexion.cerrar(con);
         }

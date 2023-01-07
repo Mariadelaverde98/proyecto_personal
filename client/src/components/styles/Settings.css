@@ -1,11 +1,11 @@
-#datasettings{
+#datasettings {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     width: 100%;
 }
 
-#datasettings input{
+#datasettings input {
     background-color: #343a40;
     border: none;
     border-bottom: 1px solid black;
@@ -13,16 +13,17 @@
     width: 100%;
 }
 
-#settingbuttons{
+#settingbuttons {
     display: flex;
     justify-content: space-between;
     flex-direction: column;
-    align-items: stretch;
     margin-top: 8px;
+    align-items: center;
 }
 
-button.settingbutton{
+button.settingbutton {
     margin-top: 8px;
     border: 1px solid aliceblue;
     border-radius: 5px;
+    width: 200px;
 }

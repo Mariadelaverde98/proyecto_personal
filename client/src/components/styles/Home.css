@@ -58,3 +58,13 @@ div#homecontainer {
     background-color: #343a40;
     color: aliceblue;
 }
+
+@media screen and (min-device-width:  768px){
+
+    .publictioncontainer {
+        width: 50%;
+    }
+    #homepublicationscontainer > div > div {
+        margin-left: 35%;
+    }
+}

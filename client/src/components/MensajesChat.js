@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import "./styles/MensajesChat.css";
 import io from 'socket.io-client';
+import enviarfoto from "./img/enviar.png";
 var socket = io.connect('http://localhost:5001');
+
 
 const MensajesChat = (props) => {
     const [storedMessages, setStoredMessages] = useState(null);
@@ -60,7 +62,7 @@ const MensajesChat = (props) => {
             {storedMessages ? storedMessages.map((msg, i) => {
                 return (
                     <div key={i} className={`d-flex ${msg.idUser === props.user.id ? "justify-content-end" : "justify-content-start"}`}>
-                        <div className={`card mb-3 shadow border-1 ${msg.idUser === props.user.id ?  "bg-light":"bg-primary bg-opacity-25"}`}>
+                        <div className={`card mb-3 shadow border-1 ${msg.idUser === props.user.id ? "bg-light" : "bg-primary bg-opacity-25"}`}>
                             <div className="card-body p-1">
                                 <small className="text-muted">{msg.msg}</small>
                             </div>
@@ -70,7 +72,7 @@ const MensajesChat = (props) => {
 
             {messages.map((message, index) => (
                 <div key={index} className={`d-flex ${message.idUser === props.user.id ? "justify-content-end" : "justify-content-start"}`}>
-                    <div className={`card mb-3 shadow border-1 ${message.idUser === props.user.id ? "bg-light": "bg-primary bg-opacity-25"}`}>
+                    <div className={`card mb-3 shadow border-1 ${message.idUser === props.user.id ? "bg-light" : "bg-primary bg-opacity-25"}`}>
                         <div className="card-body p-1">
                             <small className="text-muted">{message.msg}</small>
                         </div>
@@ -78,8 +80,9 @@ const MensajesChat = (props) => {
                 </div>
             ))}
             <div className="inputchat">
-                <input id="inputsearch" type="text" placeholder="Escribe un mensaje..." onChange={e => setMessage(e.target.value)} value={message} />
-                <button onClick={enviar}>enviar</button>
+                <input type="text" placeholder="Escribe un mensaje..." onChange={e => setMessage(e.target.value)} value={message} />
+                <button onClick={enviar}><img src={enviarfoto} alt="" /></button>
+                
             </div>
 
         </div>
