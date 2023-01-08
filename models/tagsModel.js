@@ -15,6 +15,10 @@ tagModel = {
             fk_pk_publication: {
                 type: DataTypes.INTEGER,
                 allowNull: false
+            },
+            tag_accepted: {
+                type: DataTypes.TINYINT,
+                allowNull: true
             }
         }, {
             timestamps: false

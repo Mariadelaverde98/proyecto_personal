@@ -27,7 +27,7 @@ const users = {
             const user = await userModel.create(con);
             let userr = await user.create({ name_, username, email, password_: await bcryptjs.hash(password_, 8) })
             await conexion.cerrar(con);
-            res.cookie("infoJwt", jwt.sign({ email: req.body.email, id: user.id }, "m4riAL4M3j0r"));
+            res.cookie("infoJwt", jwt.sign({ email: req.body.email, id: userr.id }, "m4riAL4M3j0r"));
             res.json(userr);
         } catch (ValidationError) {
             if (ValidationError.fields && ValidationError.fields.email) {

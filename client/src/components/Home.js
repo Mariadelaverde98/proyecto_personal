@@ -10,6 +10,7 @@ import FriendProfile from "./FriendProfile";
 import Modal from 'react-bootstrap/Modal';
 import atras from "./img/flecha.png";
 import ModalPhoto from "./ModalPhoto";
+import Notifications from "./Notifications";
 
 const Home = (props) => {
     const [view, setView] = useState("home");
@@ -19,13 +20,16 @@ const Home = (props) => {
     const [publiSelect, setPubliSelect] = useState(null);
     const [show, setShow] = useState(false);
     const [fullscreen, setFullscreen] = useState(true);
+    const [firstTime, setFirstTime] =useState(true);
+    const [notifications, setNotifications] = useState(false);
 
     function handleShow(breakpoint) {
         setFullscreen(breakpoint);
         setShow(true);
     }
 
-    useEffect(() => {
+    if(firstTime){
+        setFirstTime(false)
         let datos = {
             method: "get",
             mode: "cors",
@@ -36,7 +40,7 @@ const Home = (props) => {
             .then((res) => {
                 setUserPublis(res);
             });
-    }, []);
+    }
 
     function home() {
         return (
@@ -82,12 +86,14 @@ const Home = (props) => {
 
             <Modal id="modalfoto" show={show} fullscreen={fullscreen} onHide={() => setShow(false)}>
                 <Modal.Header >
-                    <img id="atras" src={atras} onClick={()=>setShow(false)}></img>
+                    <img id="atras" src={atras} onClick={()=>{setShow(false); setPubliSelect(false); setNotifications(true);}}></img>
                 </Modal.Header>
                 <Modal.Body>
                     {publiSelect ? <ModalPhoto publi={publiSelect} user={user}/>: null}
+                    {notifications ? <Notifications user={user}/>: null}
                 </Modal.Body>
             </Modal>
+            <button id="notificaciones" onClick={()=>{setNotifications(true); setShow(true)}}>N</button>
         </div>
     );
 };

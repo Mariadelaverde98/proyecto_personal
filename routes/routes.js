@@ -35,6 +35,8 @@ router.get("/getPublicationsAllUsers", publication.getPublicationsAllUsers)
 
 //TAGS
 router.post("/inserttag", tag.insert);
+router.get("/getTagsSolicitudes", tag.getTagsSolicitudes)
+router.post("/updateTag", tag.updateTag);
 
 //CHATS
 router.get("/getChat/:id", chat.getChat);

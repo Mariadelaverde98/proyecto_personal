@@ -74,7 +74,7 @@ const Cam = (props) => {
                 body: JSON.stringify({ users: usersTagged, fk_pk_publication: publi.id }),
                 mode: "cors",
                 headers: { "Access-Control-Allow-Origin": "*", "Content-type": "application/json" },
-            }).then(() => props.setView("home"))
+            }).then(() => window.location.reload())
         });
     }
 
@@ -96,7 +96,7 @@ const Cam = (props) => {
             }) : ""}
             {usersTagged.length ? usersTagged.map((user, i) => {
                 return (<div className="userstagged" key={user.id}>
-                    {user.photo_profile ? <div className="photousertagged"><img src={user.photo_profile} /></div> : <div class="photousertagged"><img src={fotoperfil} /></div> }
+                    {user.photo_profile ? <div className="photousertagged"><img src={user.photo_profile} /></div> : <div className="photousertagged"><img src={fotoperfil} /></div> }
                     <p>{user.username}</p>
                     <button onClick={() => quitarUser(user)}>X</button>
                 </div>)

@@ -5,7 +5,7 @@ import atras from "./img/flecha.png";
 import ModalPhoto from "./ModalPhoto";
 
 const ProfileBody = (props) => {
-    const [publications, setPublications] = useState(null);
+    const [publications, setPublications] = useState([]);
     const [publiSelect, setPubliSelect] = useState(null);
     const [firstTime, setFirstTime] = useState(true);
     const [show, setShow] = useState(false);
@@ -29,9 +29,9 @@ const ProfileBody = (props) => {
     
     return (
         <div id="profilebody">
-            {publications ? publications.map((publi, i) => {
+            {publications.length ? publications.map((publi, i) => {
                 return (<div onClick={() => {handleShow('sm-down'); setPubliSelect(publi)}} key={i}><img src={publi.publication_path} /></div>)
-            }) : ""}
+            }) : "You have not been tagged in any publication"}
 
             <Modal id="modalfoto" show={show} fullscreen={fullscreen} onHide={() => setShow(false)}>
                 <Modal.Header >
