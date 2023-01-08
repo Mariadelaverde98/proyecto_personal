@@ -1,0 +1,33 @@
+.solicitudcontainer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 16px;
+}
+
+.containerimagensol{
+    width: 100px;
+    background-color: aliceblue;
+    border: 2px solid rgb(155, 143, 255);
+}
+
+.containerimagensol img{
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+}
+
+.buttonsContainer {
+    margin-right: 16px;
+}
+
+.aceptarsol {
+    margin-right: 16px;
+    background-color: rgb(39, 168, 125);
+    border-radius: 5px;
+}
+
+.denegarsol {
+    background-color: rgb(172, 57, 57);
+    border-radius: 5px;
+}
