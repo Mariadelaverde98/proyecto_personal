@@ -11,6 +11,7 @@ import Modal from 'react-bootstrap/Modal';
 import atras from "./img/flecha.png";
 import ModalPhoto from "./ModalPhoto";
 import Notifications from "./Notifications";
+import notificacion from "./img/notificacion.png";
 
 const Home = (props) => {
     const [view, setView] = useState("home");
@@ -38,6 +39,7 @@ const Home = (props) => {
         fetch("/getPublicationsAllUsers", datos)
             .then((res) => res.json())
             .then((res) => {
+                console.log(res)
                 setUserPublis(res);
             });
     }
@@ -48,7 +50,7 @@ const Home = (props) => {
                 {userPublis.length ? userPublis.map((user, i) => {
                     return (
                         <div key={i}>
-                            {user.publications.map((publi, i) => {
+                            {user.publications.length ? user.publications.map((publi, i) => {
                                 return (
                                     <div key={i}>
                                         <div className="fotousershome">
@@ -65,12 +67,12 @@ const Home = (props) => {
                                         <p>{publi.title}</p>
                                     </div>
                                 )
-                            })}
+                            }) : "There is no publications"}
 
                         </div>
                     )
                 })
-                    : ""}
+                    : "There is no publications"}
             </div>
         );
     }
@@ -93,7 +95,7 @@ const Home = (props) => {
                     {notifications ? <Notifications user={user}/>: null}
                 </Modal.Body>
             </Modal>
-            <button id="notificaciones" onClick={()=>{setNotifications(true); setShow(true)}}>N</button>
+            <button id="notificaciones" onClick={()=>{setNotifications(true); setShow(true)}}><img src={notificacion} alt="" /></button>
         </div>
     );
 };

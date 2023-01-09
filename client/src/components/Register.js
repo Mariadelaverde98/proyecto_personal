@@ -46,19 +46,19 @@ const Register = (props) => {
                         <img id="logo" src={logo} />
                     </div>
                     <div id="form">
-                        <input placeholder="Correo electrónico" type="text" onChange={(e) => { setEmail(e.target.value); }} />
-                        <input placeholder="Nombre" type="text" onChange={(e) => { setName_(e.target.value); }} />
-                        <input placeholder="Nombre de usuario" type="text" onChange={(e) => { setUsername(e.target.value); }} />
-                        <input placeholder="Contraseña" type="password" onChange={(e) => { setPassword_(e.target.value); }} />
-                        <input placeholder="Confirma contraseña" type="password" onChange={(e) => { setPassword_2(e.target.value); }} />
-                        {!passOk ? <p>Las constraseñas no coinciden</p> : null}
-                        {!emailOk ? <p>El email introducido ya está asociado a otra cuenta</p> : null}
-                        {!usernameOk ? <p>El nombre de usuario ya existe</p> : null}
-                        <button onClick={() => { regis() }}>Regístrate</button>
+                        <input placeholder="Email" type="text" onChange={(e) => { setEmail(e.target.value); }} />
+                        <input placeholder="Name" type="text" onChange={(e) => { setName_(e.target.value); }} />
+                        <input placeholder="Username" type="text" onChange={(e) => { setUsername(e.target.value); }} />
+                        <input placeholder="Password" type="password" onChange={(e) => { setPassword_(e.target.value); }} />
+                        <input placeholder="Confirm password" type="password" onChange={(e) => { setPassword_2(e.target.value); }} />
+                        {!passOk ? <p>Passwords do not match</p> : null}
+                        {!emailOk ? <p>The entered email is already associated to another account</p> : null}
+                        {!usernameOk ? <p>The user name already exists</p> : null}
+                        <button onClick={() => { regis() }}>Register</button>
                     </div>
                     <div id="separador"></div>
                     <div className="registro">
-                        ¿Ya tienes una cuenta? <a onClick={() => { props.vista(false) }}>Inicia sesión</a>
+                    Already have an account? <a onClick={() => { props.vista(false) }}>Log in</a>
                     </div>
                 </div>
                 : <RegisterContinue email={email} name={name_} username ={username} setLogueado={props.setLogueado}></RegisterContinue>}

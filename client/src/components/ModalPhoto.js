@@ -54,7 +54,7 @@ const ModalPhoto = (props) => {
                     return (
                         <div key={i}><strong>{comment.username}</strong>: {comment.comment}</div>)
                 })
-                : "No hay comentarios"}
+                : "There are no comments"}
             {comments.map((com, i) => (
                 <div key={i}><strong>{com.username}</strong>: {com.text}</div>)
             )}

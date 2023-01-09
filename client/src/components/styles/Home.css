@@ -1,5 +1,6 @@
 div#homecontainer {
     width: 100%;
+    height: 100%;
 }
 
 .fotousershome div {
@@ -26,6 +27,7 @@ div#homecontainer {
 #homepublicationscontainer {
     border-top: 1px solid rgb(155, 143, 255);
     background-color: #343a40;
+    color: aliceblue
 }
 
 .fotousershome p {
@@ -48,6 +50,7 @@ div#homecontainer {
     flex-direction: column;
     align-items: flex-start;
     color: aliceblue;
+    height: 100%;
 }
 
 #homepublicationscontainer > div > div > p {
@@ -78,4 +81,8 @@ div#homecontainer {
     right: 16px;
     background-color: rgb(155, 143, 255);
     border: 2px solid black
+}
+
+#notificaciones img{
+    width: 25px;
 }

@@ -86,8 +86,8 @@ const Cam = (props) => {
                     <img id="subirfoto" src={foto} />
                 </div>
             </label>
-            <input id="escribetitulo" type="text" placeholder="Escribe un título..." onChange={(e) => { setTitle(e.target.value) }} />
-            <input id="inputetiquetas" type="text" placeholder="¿Quien sale en esta foto?" onChange={(e) => buscar(e.target.value)} />
+            <input id="escribetitulo" type="text" placeholder="Write a title..." onChange={(e) => { setTitle(e.target.value) }} />
+            <input id="inputetiquetas" type="text" placeholder="Who is in this photo?" onChange={(e) => buscar(e.target.value)} />
 
             {users.length ? users.map((user, i) => {
                 return (<div key={user.id} onClick={() => addUser(user)}>
@@ -101,7 +101,7 @@ const Cam = (props) => {
                     <button onClick={() => quitarUser(user)}>X</button>
                 </div>)
             }) : ""}
-            <button id="publicar" onClick={publicar}>Publicar</button>
+            <button id="publicar" onClick={publicar}>Publish</button>
 
         </div>
     );

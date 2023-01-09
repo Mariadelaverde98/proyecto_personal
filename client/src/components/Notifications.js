@@ -38,7 +38,7 @@ const Notifications = (props) => {
 
     return (
         <div>
-            Solicitudes de etiquetas en fotos: <br />
+            Requests for photo tags: <br />
             {solicitudes.length ? solicitudes.map((sol, i) => {
                 return (
                     <div key={i} className="solicitudcontainer">
@@ -56,7 +56,7 @@ const Notifications = (props) => {
                         </div>
                     </div>
                 )
-            }) : "No hay notificaciones"}
+            }) : "No requests"}
         </div>
     );
 };

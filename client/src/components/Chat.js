@@ -97,7 +97,7 @@ const Chat = (props) => {
 
     return (
         <div >
-            <input id="inputsearch" type="text" placeholder="Buscar" onChange={(e) => buscar(e.target.value)} />
+            <input id="inputsearch" type="text" placeholder="Search" onChange={(e) => buscar(e.target.value)} />
             <div id="userresults">
                 {users ? users.map((user, i) => {
                     return (<div key={i} onClick={() => { select(user) }}>
@@ -107,7 +107,6 @@ const Chat = (props) => {
             </div>
 
             <div>
-                todos los chats
                 {chats.length ? chats.map((chat, i) => {
                     return (<div onClick={() => { selectChat(chat) }} key={i}>
                         {miniaturaChat(chat.chat.users.filter(user => user.dataValues.id !== props.user.id)[0].dataValues, chat)}

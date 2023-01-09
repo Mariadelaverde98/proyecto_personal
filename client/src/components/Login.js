@@ -33,18 +33,18 @@ const Login = (props) => {
             <div id="form">
 
                 <input placeholder="Email" type="text" onChange={(e) => { setEmail(e.target.value); }} />
-                <input placeholder="Contraseña" type="password" onChange={(e) => { setPassword_(e.target.value); }} />
+                <input placeholder="Password" type="password" onChange={(e) => { setPassword_(e.target.value); }} />
                 {!loginOk ? (
-                    <div>Email o contraseña incorrecta</div>
-                ): null}
-                <button onClick={() => { login() }}>Entrar</button>
-                <p>¿Olvidaste tu contraseña?</p>
+                    <div>Incorrect email or password</div>
+                ) : null}
+                <button onClick={() => { login() }}>Log in</button>
+                {/* <p>¿Olvidaste tu contraseña?</p> */}
             </div>
             <div id="separador">
 
             </div>
             <div className="registro">
-                ¿Aún no te has registrado? <a href="#" onClick={() => { props.vista(true) }}>Regístrate</a>
+                Not registered yet? <a href="#" onClick={() => { props.vista(true) }}>Register</a>
             </div>
         </div>
     );

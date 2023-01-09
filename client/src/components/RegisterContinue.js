@@ -36,7 +36,7 @@ const RegisterContinue = (props) => {
         <div className="form_container">
             <div className="form_logo">
                 <img id="logo" src={logo} />
-                <h1>Completa tu perfil con una foto</h1>
+                <h1>Complete your profile with a photo</h1>
 
             </div>
             <form id="myform" name="myform" encType="multipart/form-data">
@@ -47,12 +47,12 @@ const RegisterContinue = (props) => {
                     </div>
                 </label>
                 <div id="userdata">
-                    <p>Nombre: {props.name}</p>
-                    <p>Nombre de usuario: {props.username}</p>
+                    <p>Name: {props.name}</p>
+                    <p>Username: {props.username}</p>
                     <p>Email: {props.email}</p>
                 </div>
             </form>
-            <button onClick={() => props.setLogueado(true)}>Continuar</button>
+            <button onClick={() => props.setLogueado(true)}>Continue</button>
         </div>
     );
 };
