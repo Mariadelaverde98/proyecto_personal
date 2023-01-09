@@ -28,11 +28,25 @@ const tag = {
         }
     },
 
+    /**
+     * Funcion que devuelve los ids de las publicaciones en las
+     * que esta etiquetado el usuario con la sesion iniciada.
+     * @param {*} id 
+     * @param {*} con 
+     * @returns 
+     */
     getTags: async (id, con) => {
         const tagM = await tagsModel.create(con);
         return await tagM.findAll({ where: { fk_pk_user: id, tag_accepted: 1 } })
     },
 
+    /**
+     * Devuelve todas las etiquetas que tengan el campo tag_accepted
+     * a null. Es decir, todas las etiquetas que esten pendientes 
+     * de ser aceptadas o rechazadas.
+     * @param {*} req 
+     * @param {*} res 
+     */
     getTagsSolicitudes: async (req, res) => {
         try {
             var con = await conexion.abrir();
@@ -57,6 +71,13 @@ const tag = {
         }
     },
 
+    /**
+     * Funcion que actualiza el campo tag_accepted a 0 o 1 (dependiendo
+     * de lo que venga en el body de la peticion). Es decir, acepta o 
+     * rechaza una etiqueta.
+     * @param {*} req 
+     * @param {*} res 
+     */
     updateTag: async (req, res) => {
         try {
             var con = await conexion.abrir();

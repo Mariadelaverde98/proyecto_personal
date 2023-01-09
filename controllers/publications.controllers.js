@@ -82,6 +82,13 @@ const publication = {
         }
     },
 
+    /**
+     * Funcion que devuelve todos los usuarios a los que el usuario
+     * con la sesion iniciada esta siguiendo junto con todas las
+     * publicaciones en las que este usuario esta etiquetado.
+     * @param {*} req 
+     * @param {*} res 
+     */
     getPublicationsAllUsers: async (req, res) => {
         try {
             var con = await conexion.abrir();

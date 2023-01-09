@@ -4,6 +4,14 @@ const UserModel = require("../models/usersModel");
 const msgChatModel = require("../models/msgsChatsModel");
 
 const chat = {
+
+    /**
+     * Busca un chat entre el usuario que tiene la sesion iniciada y otro
+     * cuyo id se pasa como parametro en la peticion. En caso de existir este
+     * chat, lo retorna y en caso contrario, lo crea y lo retorna.
+     * @param {*} req 
+     * @param {*} res 
+     */
     getChat: async (req, res) => {
         try {
             let user1 = users.emailSesion(req);
@@ -23,6 +31,12 @@ const chat = {
         }
     },
 
+    /**
+     * Devuelve todos los chats que tiene activos el usuario con la sesion
+     * iniciada.
+     * @param {*} req 
+     * @param {*} res 
+     */
     getAllChats: async (req, res) => {
         try {
             let user1 = users.emailSesion(req);
@@ -39,29 +53,7 @@ const chat = {
         } catch(e) {
             console.log(e)
         }
-    },
-
-    deleteTarea: async (req, res) => {
-        const { nombreTarea } = req.body;
-        const deleteTarea = await tareaModel.deleteOne({ nombreTarea });
-        res.json(deleteTarea);
-    },
-
-    deleteAllTareas: async (req, res) => {
-        const { idUsuario } = req.body;
-        const deleteAllTareas = await tareaModel.delete({
-            where: { idUsuario },
-        });
-        res.json(deleteAllTareas);
-    },
-    
-    updateTareas: async (req, res) => {
-        const { id, nombreTarea } = req.body;
-        let filter = { _id: id };
-        let update = { nombreTarea };
-        const updateTarea = await tareaModel.findByIdAndUpdate(filter, update);
-        res.json(updateTarea);
-    },
+    }
 };
 
 module.exports = chat;

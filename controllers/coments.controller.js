@@ -1,6 +1,13 @@
 const commentsModel = require("../models/comentsModel");
 
 const comment = {
+
+    /**
+     * Inserta un registro en la tabla comments de la base de datos
+     * donde todos los campos se pasan en el body de la peticion.
+     * @param {*} req 
+     * @param {*} res 
+     */
     insert: async (req, res) => {
         try {
             const { idUser, idPublication, username, text } = req.body
@@ -19,6 +26,12 @@ const comment = {
         } 
     },
 
+    /**
+     * Devuelve todos los comentarios de una publicacion cuyo
+     * id se pasa como parametro de la peticion get.
+     * @param {*} req 
+     * @param {*} res 
+     */
     get: async (req, res) => {
         try {
             res.json(await commentsModel.find({ idPublication: req.params.id }));

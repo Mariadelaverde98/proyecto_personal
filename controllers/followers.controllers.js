@@ -27,6 +27,14 @@ const follower = {
         }
     },
 
+    /**
+     * Funcion que elimina un registro de la tabla followers.
+     * Se borra el registro que tiene como fk_pk_user_follower el id
+     * del usuario que tiene la sesion iniciada y como fk_pk_user, 
+     * el id que se pasa en el body de la peticion.
+     * @param {*} req 
+     * @param {*} res 
+     */
     unfollow: async (req, res) => {
         try {
             let jwtVerify = jwt.verify(req.cookies.infoJwt, "m4riAL4M3j0r")
@@ -97,6 +105,12 @@ const follower = {
         }
     },
 
+    /**
+     * Devuelve el numero de followers y el numero de following del user
+     * cuyo id se pasa como parametro de la peticion get.
+     * @param {*} req 
+     * @param {*} res 
+     */
     numFollows2: async (req, res) => {
         try {
             var con = await conexion.abrir();
@@ -123,6 +137,13 @@ const follower = {
         }
     },
 
+    /**
+     * Funcion que retorna todos los ids de los usuarios a los que 
+     * sigue el usuario con la sesion iniciada.
+     * @param {*} req 
+     * @param {*} con 
+     * @returns 
+     */
     following: async (req, con) => {
         try {
             let jwtVerify = jwt.verify(req.cookies.infoJwt, "m4riAL4M3j0r");
